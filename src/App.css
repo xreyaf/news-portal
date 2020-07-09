@@ -6,22 +6,49 @@
     max-width: 600px;
     height: auto;
     border-radius: 15px;
-    border: 1px solid #a1a9a7;
+    border: 1px solid #333336;
+    display: flex;
+    background-color: rgb(228, 228, 228);
+    color: black;
+}
+body {
+    background: linear-gradient(to bottom, #131313 0%, #252525 40%, #111111 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+    background-blend-mode: multiply;
+    color: white;
+}
 
+#HomeBtn{
+    color: white;
+    font-size: 18px;
+}
+
+.Header{
+    color: white;
+    background: linear-gradient(to bottom, #383838 0%, #363636 40%, #2c2c2c 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+    background-blend-mode: multiply;
+}
+
+.Footer{
+    background: linear-gradient(to bottom, #383838 0%, #363636 40%, #2c2c2c 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+    background-blend-mode: multiply;
+    color: white;
+}
+.MuiTypography-colorTextSecondary{
+    color: white !important;
 }
 
 .news_image {
-    float: left;
     width: 200px;
-    height: 150px;
+    height: auto;
     background-repeat: no-repeat;
-    background-size: cover;
     background-position: center;
-    margin: 25px;
+    margin: 20px;
+    border-radius: 5px;
 }
 
 .news_info {
-    padding: 15px 30px;
+    flex: 1;
+    padding: 10px 25px;
 }
 
 .container {
@@ -34,15 +61,32 @@
     font-size: 3rem;
     font-family: "Galada", cursive !important;
 }
-.getMoreButton{
+.MuiTypography-h4{
+    font-family: "Roboto" !important;
+    text-transform: uppercase;
+}
+#getMoreButton{
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
+    margin-bottom: 20px;
+    color: white;
+    background-color: rgb(66, 66, 66);
+}
+
+#SignInBtn{
+    border: 0px;
+    font-size: 22px;
+    color: rgb(208,153,89);
+}
+
+#SignInBtn:hover{
+    color: rgb(204, 166, 123);;
 }
 
 #toTopBtn {
     display: inline-block;
-    color: #FF9800;
+    background-color: white;
     width: 50px;
     height: 50px;
     text-align: center;
@@ -65,4 +109,5 @@
     opacity: 1;
     visibility: visible;
   }
+  
   

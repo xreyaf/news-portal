@@ -27,7 +27,7 @@ export default function Header(props) {
   return (
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
-        <Button size="small">Home</Button>
+        <Button id="HomeBtn" size="small">Home</Button>
         <Typography 
           fontFamily="'Galada', cursive"
           variant="h3" 
@@ -39,7 +39,7 @@ export default function Header(props) {
           className={classes.toolbarTitle}>
         News Portal
         </Typography>
-        <Button variant="outlined" size="small" >
+        <Button id="SignInBtn" variant="outlined" size="small" >
           Sign in
         </Button>
       </Toolbar>
