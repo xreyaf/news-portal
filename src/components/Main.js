@@ -31,7 +31,7 @@ class Main extends Component {
       const {news} = this.state;
       
       axios
-      .get('http://www.json-generator.com/api/json/get/cfYoxRJspu?indent=2')
+      .get('http://www.json-generator.com/api/json/get/cggSeGGCbm?indent=2')
       .then(res => {
           let newData = res
               .data
@@ -41,22 +41,15 @@ class Main extends Component {
       .catch(err => console.log("Couldn't fetch data. Error: " + err))
       return (
         <div className="NewsContainer" >
-        <Typography 
-           variant="h4" 
-           component="h2"
-           color="insherit"
-           align="center">
-         Latest news
-         </Typography>
          <div className="container">
-             { news.map(({ title, description, image},key) =>{
+             { news.map(({ title, description, image, date},key) =>{
              return (
                  <News 
                  key={key}
                  title={title}
                  description={description.slice(0,150) + '...'}
                  image={image}
-                 />
+                 date={date}              />
              );
          })
          } 

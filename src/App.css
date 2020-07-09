@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 .news {
     height: 350px;
     margin: 30px;
@@ -10,11 +12,23 @@
     display: flex;
     background-color: rgb(228, 228, 228);
     color: black;
+    position: relative;
 }
 body {
     background: linear-gradient(to bottom, #131313 0%, #252525 40%, #111111 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
     background-blend-mode: multiply;
     color: white;
+}
+
+.news_info_footer{
+    transform: translateZ(0);
+    fill: inherit;
+    font-size: 12px;
+    line-height: 14px;
+    position: absolute;
+    margin-top: 10px;
+    color: #757575;
+    bottom: 10px;
 }
 
 #HomeBtn{
@@ -62,7 +76,7 @@ body {
     font-family: "Galada", cursive !important;
 }
 .MuiTypography-h4{
-    font-family: "Roboto" !important;
+    font-family: 'Poppins', sans-serif !important;
     text-transform: uppercase;
 }
 #getMoreButton{
@@ -76,7 +90,7 @@ body {
 
 #SignInBtn{
     border: 0px;
-    font-size: 22px;
+    font-size: 18px;
     color: rgb(208,153,89);
 }
 
