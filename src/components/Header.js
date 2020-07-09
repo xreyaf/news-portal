@@ -40,7 +40,7 @@ export default function Header(props) {
         News Portal
         </Typography>
         <Button variant="outlined" size="small" >
-          Login
+          Sign in
         </Button>
       </Toolbar>
     </React.Fragment>

@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
     <meta name="theme-color" content="#000000" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -33,5 +34,31 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+
+      jQuery(document).ready(function() {
+        
+        var btn = $('#toTopBtn');
+      
+        $(window).scroll(function() {
+          if ($(window).scrollTop() > 300) {
+            if(!btn.hasClass("show")){
+              btn.addClass("show");
+            }
+          } else {
+            if(btn.hasClass("show")){
+              btn.removeClass("show");
+            }
+          }
+        });
+      
+        btn.on('click', function(e) {
+          e.preventDefault();
+          $('html, body').animate({scrollTop:0}, '300');
+        });
+      
+      });
+      
+      </script>
   </body>
 </html>
