@@ -9,10 +9,11 @@ namespace NewsPortalWebApi.Data
 {
     public class NewsPortalWebApiContext : DbContext
     {
-        public NewsPortalWebApiContext (DbContextOptions<NewsPortalWebApiContext> options) : base(options)
+        public NewsPortalWebApiContext (DbContextOptions<NewsPortalWebApiContext> options)
+            : base(options)
         {
         }
 
-        public DbSet<News> News { get; set; }
+        public DbSet<NewsPortalWebApi.News> News { get; set; }
     }
 }
