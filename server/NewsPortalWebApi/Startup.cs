@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using NewsPortalWebApi.Data;
 using Microsoft.OpenApi.Models;
+using NewsPortalWebApi.Data.EFCore;
 
 namespace NewsPortalWebApi
 {
@@ -42,6 +43,8 @@ namespace NewsPortalWebApi
             {
                 c.SwaggerDoc(name: "v1", new OpenApiInfo { Title = "News Web Api", Version = "v1"});
             });
+
+            services.AddScoped<EfCoreNewsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
