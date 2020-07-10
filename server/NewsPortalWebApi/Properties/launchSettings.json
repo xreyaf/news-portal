@@ -20,7 +20,7 @@
     "NewsPortalWebApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "News",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NewsPortalWebApi.Migrations
 {
@@ -11,11 +11,13 @@ namespace NewsPortalWebApi.Migrations
                 name: "News",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Title = table.Column<string>(type: "text", nullable: true),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    NewsImage = table.Column<string>(type: "text", nullable: true)
+                    NewsImage = table.Column<string>(type: "text", nullable: true),
+                    MainText = table.Column<string>(type: "text", nullable: true),
+                    CreationDataTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    ChengingDataTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
