@@ -41,12 +41,8 @@ namespace NewsPortalWebApi.Controllers
 
         // PUT: api/News/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutNews(Guid id, TEntity news)
-        {
-            if (id != news.Id)
-            {
-                return BadRequest();
-            }
+        public async Task<IActionResult> PutNews(TEntity news)
+        {            
             await repository.Update(news);
             return NoContent();
         }
