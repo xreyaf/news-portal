@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NewsPortalWebApi.Data;
 
-namespace NewsPortalWebApi
+namespace NewsPortalWebApi.Models
 {
-    public class News : IEntity
+    public class NewsDetailDto
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
@@ -15,6 +14,5 @@ namespace NewsPortalWebApi
         public string MainText { get; set; }
         public DateTime CreationDataTime { get; set; }
         public DateTime ChengingDataTime { get; set; }
-
     }
 }

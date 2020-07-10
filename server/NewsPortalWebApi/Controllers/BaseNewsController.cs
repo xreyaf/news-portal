@@ -29,7 +29,7 @@ namespace NewsPortalWebApi.Controllers
 
         // GET: api/News/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TEntity>> GetNews(int id)
+        public async Task<ActionResult<TEntity>> GetNews(Guid id)
         {
             var news = await repository.Get(id);
             if (news == null)
@@ -41,7 +41,7 @@ namespace NewsPortalWebApi.Controllers
 
         // PUT: api/News/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutNews(int id, TEntity news)
+        public async Task<IActionResult> PutNews(Guid id, TEntity news)
         {
             if (id != news.Id)
             {
@@ -61,7 +61,7 @@ namespace NewsPortalWebApi.Controllers
 
         // DELETE: api/News/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<TEntity>> Delete(int id)
+        public async Task<ActionResult<TEntity>> Delete(Guid id)
         {
             var news = await repository.Delete(id);
             if (news == null)
