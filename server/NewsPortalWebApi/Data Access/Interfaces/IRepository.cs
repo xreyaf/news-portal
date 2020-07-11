@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NewsPortalWebApi.Data
+namespace NewsPortalWebApi.Data_Access.Interfaces
 {
     public interface IRepository<T> where T : class, IEntity
     {
-        Task<List<T>> GetAll();
-        Task<T> Get(Guid id);
-        Task<T> Add(T entity);
-        Task<T> Update(T entity);
-        Task<T> Delete(Guid id);
+        IEnumerable<T> GetAll();
+        T Get(Guid id);
+        void Add(T entity);
+        void Update(T entity);
+        void Delete(Guid id);
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NewsPortalWebApi.Data;
+using NewsPortalWebApi.Data_Access.EFCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace NewsPortalWebApi.Migrations

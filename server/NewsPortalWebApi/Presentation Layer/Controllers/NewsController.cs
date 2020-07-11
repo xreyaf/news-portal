@@ -6,25 +6,34 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NewsPortalWebApi;
-using NewsPortalWebApi.Data;
-using NewsPortalWebApi.Data.EFCore;
+using NewsPortalWebApi.Data_Access.Interfaces;
+using NewsPortalWebApi.Data_Access.EFCore.Repositories;
+using NewsPortalWebApi.Business_Logic.DTO;
+using NewsPortalWebApi.Business_Logic.Inerfaces;
+using NewsPortalWebApi.Business_Logic.Services;
 
-namespace NewsPortalWebApi.Controllers
+namespace NewsPortalWebApi.Presentation_Layer.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class NewsController : BaseNewsController<News, EfCoreNewsRepository>
+    [Route("api/[controller]")]
+    public class NewsController : ControllerBase
     {
-        //private readonly NewsPortalWebApiContext _context;
-
-        public NewsController(EfCoreNewsRepository repository) : base(repository)
+        readonly INewsService<NewsDetailDto> newsService;
+        private readonly IUnitOfWork _unitOfWork;
+        public NewsController(IUnitOfWork unitOfWork)
         {
-            
+            _unitOfWork = unitOfWork;
+            newsService = new NewsServices(_unitOfWork);
         }
-
-        /*private bool NewsExists(int id)
+        [HttpGet]
+        public IEnumerable<NewsDetailDto> GetAllNews()
         {
-            return _context.News.Any(e => e.Id == id);
-        }*/
+            return newsService.GetAllNews();
+        }
+        [HttpGet("{id}")]
+        public NewsDetailDto GetNews(Guid Id)
+        {
+            return newsService.GetNews(Id);
+        }
     }
 }

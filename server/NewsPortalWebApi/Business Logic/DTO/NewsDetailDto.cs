@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NewsPortalWebApi.Models
+namespace NewsPortalWebApi.Business_Logic.DTO
 {
     public class NewsDetailDto
     {
@@ -13,6 +13,8 @@ namespace NewsPortalWebApi.Models
         public string NewsImage { get; set; }
         public string MainText { get; set; }
         public DateTime CreationDataTime { get; set; }
-        public DateTime ChengingDataTime { get; set; }
+        public DateTime ChangingDataTime { get; set; }
+        public bool Relevancy { get; set; }
+
     }
 }

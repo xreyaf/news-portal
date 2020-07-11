@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NewsPortalWebApi.Data_Access.Models;
 
 namespace NewsPortalWebApi.Data_Access.Interfaces
 {
-    public interface IEntity
+    public interface IUnitOfWork : IDisposable
     {
-        public Guid Id { get; set; }
+        IRepository<News> NewsRep { get; }
+        void Save();
     }
 }
