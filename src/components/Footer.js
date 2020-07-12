@@ -6,45 +6,60 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
 function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="http://bmstu-kaluga.ru/" target="_blank" rel="noopener noreferrer">
-        BMSTU
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
+  const classes = useStyles();
+    return (
+      <Typography className={classes.cprttext} variant="body2" color="textSecondary" align="center">
+        ©
+        {' '}
+        {new Date().getFullYear()}
+        {' '}
+        <Link
+          color="inherit"
+          href="http://bmstu-kaluga.ru/"
+          target="_blank"
+          rel="noopener noreferrer"
+          underline="none"
+        >
+          BMSTU
+        </Link>
+      </Typography>
+
+    );
 }
 
 const useStyles = makeStyles((theme) => ({
-  footer: {
-    position: 'relative',
-    padding: theme.spacing(6, 0),
-  },
+    footer: {
+        background: '#424242',
+        color: '#ebebeb',
+        position: 'relative',
+        padding: theme.spacing(6, 0),
+    },
+    cprttext: {
+      color: 'lightgray',
+    },
 }));
 
-export default function Footer(props) {
-  const classes = useStyles();
-  const { description, title } = props;
+export default function Footer() {
+    const classes = useStyles();
 
-  return (
-    <footer className={classes.footer}>
-      <Container maxWidth="lg">
-        <Typography variant="h6" align="center" gutterBottom>
-          {title}
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          {description}
-        </Typography>
-        <Copyright />
-      </Container>
-    </footer>
-  );
+    return (
+      <footer className={classes.footer}>
+        <Container maxWidth="lg">
+          <Typography
+            variant="subtitle1"
+            align="center"
+            color="inherit"
+            component="p"
+          >
+            w0w
+          </Typography>
+          <Copyright />
+        </Container>
+      </footer>
+    );
 }
 
 Footer.propTypes = {
-  description: PropTypes.string,
-  title: PropTypes.string,
+    description: PropTypes.string,
+    title: PropTypes.string,
 };
