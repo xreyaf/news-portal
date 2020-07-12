@@ -1,70 +1,69 @@
-import React, {Component} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import {makeStyles} from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container'
+import NewsCard from './NewsCard';
+import useInfiniteScroll from './useInfinite';
+import Skeletons from './Skeletons';
 
-import News from './News';
 
+const useStyles = makeStyles((theme) => ({
+    newsContainer: {
+        padding: theme.spacing(0, 4, 4, 4)
+    },
+}));
 
-class Main extends Component {
+export default function Main() {
+    const classes = useStyles();
+    const [url,
+        setUrl] = useState('http://www.json-generator.com/api/json/get/ceesmrUZnS?indent=2');
+    const [data,
+        setData] = useState([]);
+    const [length,
+        setLength] = useState(10);
+    const [isFetching,
+        setIsFetching] = useInfiniteScroll(moreData);
 
-  constructor(props) {
-      super(props);
+    const loadData = () => {
+        axios
+            .get(url)
+            .then((res) => {
+                setData(res.data.slice(0, length));
+            });
+    };
+    function moreData() {
+        axios
+            .get(url)
+            .then((res) => {
+                setData([
+                    ...data,
+                    ...res.data
+                ]);
+                setLength(length + 1);
+                setIsFetching(false);
+            });
+    }
 
-      this.state = {
-          news: [],
-          lenght : 10
-      };
+    useEffect(() => {
+        loadData();
+    }, []);
 
-      
-
-      this.fetchMorePosts = this.fetchMorePosts.bind(this);
-  }
-
-  fetchMorePosts(){
-      this.setState({lenght: this.state.lenght+10});
-      console.log(this.state.lenght);
-  }
-  render() {
-
-      const {news} = this.state;
-      
-      axios
-      .get('http://www.json-generator.com/api/json/get/cggSeGGCbm?indent=2')
-      .then(res => {
-          let newData = res
-              .data
-              .slice(0, this.state.lenght);
-          this.setState({news: newData})
-      })
-      .catch(err => console.log("Couldn't fetch data. Error: " + err))
-      return (
-        <div className="NewsContainer" >
-         <div className="container">
-             { news.map(({ title, description, image, date},key) =>{
-             return (
-                 <News 
-                 key={key}
-                 title={title}
-                 description={description.slice(0,150) + '...'}
-                 image={image}
-                 date={date}              />
-             );
-         })
-         } 
-         </div>
-         <div className="donwContainer">
-           <Button id="getMoreButton" onClick={this.fetchMorePosts} variant="outlined" size="small" >
-             Get more views
-           </Button>
-           <svg class="MuiSvgIcon-root jss162" id="toTopBtn" focusable="false" viewBox="0 0 24 24" aria-hidden="true" tabindex="-1" title="KeyboardArrowUp" data-ga-event-category="material-icons" data-ga-event-action="click" data-ga-event-label="KeyboardArrowUp"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>
-         </div>
-         </div>
-      )
-  }
+    return (
+        <Container className={classes.newsContainer} maxWidth="lg">
+            <Grid container spacing={6} justify="center" >
+                {data.length === 0 ? (<Skeletons />)
+                    :(
+                    data.map((item) => (<NewsCard
+                    key={item.key}
+                    title={item.title}
+                    description={`${item
+                    .description
+                    .slice(0, 150)}...`}
+                    image={item.image}
+                    date={item.date}/>)))}
+            </Grid>
+        </Container>
+    )
 }
-
-export default Main
-
-
