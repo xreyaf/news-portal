@@ -23,4 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Visual Studio
+server/NewsPortalWebApi/bin/
+server/NewsPortalWebApi/obj/
+server/.vs/
 client/.vscode/
