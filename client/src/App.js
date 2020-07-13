@@ -1,25 +1,80 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import CssBaseline  from '@material-ui/core/CssBaseline';
 import { Header, Main, Footer } from './components';
-import NewsCard from './components/NewsCard';
+import { NewsCard } from './components';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import Zoom from '@material-ui/core/Zoom';
+import Fab from '@material-ui/core/Fab';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import grey from '@material-ui/core/colors/grey';
+
+const useStyles = makeStyles((theme) => ({
+  newsContainer: {
+    padding: theme.spacing(0, 4, 4, 4),
+    minHeight: '70vh',
+  },
+  scrollToTopButton: {
+    position: "fixed",
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
+    zIndex: '99999',
+  },
+}));
+
+function ScrollTop(props) {
+  const { children } = props;
+  const classes = useStyles();
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 100
+  });
+
+  const handleClick = event => {
+    const anchor = (event.target.ownerDocument || document).querySelector(
+      "#back-to-top-anchor"
+      
+    );
+      console.log('нажата кнопка');
+    if (anchor) {
+      anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
+  return (
+    <Zoom in={trigger}>
+      <div onClick={handleClick} role="presentation" className={classes.scrollToTopButton}>
+        {children}
+      </div>
+    </Zoom>
+  );
+}
+
+ScrollTop.propTypes = {
+  children: PropTypes.element.isRequired
+};
 
 export default function App() {
+  const classes = useStyles();
+
   const theme = createMuiTheme({
     overrides: {
       MuiCssBaseline: {
         '@global': {
           body: {
+            margin: '0',
+            fontFamily: 'Roboto',
             WebkitFontSmoothing: 'auto',
-            backgroundColor: '#212121',
-            color: '#ebebeb',
+            backgroundColor: grey[900],
+            color: grey[300],
           },
         },
       },
     },
   });
-
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -27,7 +82,6 @@ export default function App() {
         <Header />
         <Switch>
           <Route path="/" component={Main} />
-          {' '}
           <Route
             path="/news/:title"
             component={NewsCard}
@@ -35,7 +89,11 @@ export default function App() {
         </Switch>
         <Footer />
       </BrowserRouter>
-
+      <ScrollTop className={classes.scrollToTopButton}>
+        <Fab color="secondary" size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
     </ThemeProvider>
   );
 }

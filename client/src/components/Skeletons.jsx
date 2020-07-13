@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Variants() {
   const classes = useStyles();
+
   return (
     <div className={classes.loading}>
       <Grid container spacing={5} justify="center">

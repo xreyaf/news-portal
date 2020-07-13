@@ -4,17 +4,28 @@ import Link from '@material-ui/core/Link';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import amber from '@material-ui/core/colors/amber';
+import grey from '@material-ui/core/colors/grey';
+
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
-    color: '#f1f1f1',
-    background: '#212121',
+    color: grey[50],
+    background: grey[900],
   },
   toolbarTitle: {
     flex: 1,
     fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
       'Galada',
       'cursive',
+      'Roboto',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
     ].join(','),
     margin: theme.spacing(1, 0),
   },
@@ -27,51 +38,20 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
   HomeBtn: {
-    color: '#ededed',
+    color: grey[300],
     fontSize: '18px',
     '&:hover': {
-      color: '#ffffff',
+      color: grey[50],
       transition: 'all 0.2s ease-in',
     },
   },
   SignInBtn: {
     border: '0px',
     fontSize: '18px',
-    color: '#d09959',
+    color: amber [700],
     '&:hover': {
-      color: '#ffca87',
+      color: amber [500],
       transition: 'all 0.2s ease-in',
-    },
-  },
-  ToTopButton: {
-    display: 'inline-block',
-    backgroundColor: '#d09959',
-    width: '50px',
-    height: '50px',
-    textAlign: 'center',
-    borderRadius: '30px',
-    position: 'fixed',
-    bottom: '3%',
-    right: '3%',
-    transition: theme.transitions.create('opacity', {
-      easing: theme.transitions.easing.easeIn,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    opacity: '0',
-    visibility: 'hidden',
-    zIndex: '1000',
-    border: 'none',
-    outline: 'none',
-    '&:hover': {
-      transition: 'all 0.5s ease-in-out',
-      cursor: 'pointer',
-      border: 'none',
-      outline: 'none',
-      backgroundColor: '#e0a765',
-    },
-    '&.show': {
-      opacity: '0.9',
-      visibility: 'visible',
     },
   },
 }));
@@ -99,20 +79,6 @@ export default function Header() {
         </Button>
       </Toolbar>
       {' '}
-      <svg
-        className={classes.ToTopButton}
-        id="toTopBtn"
-        focusable="false"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-        tabIndex="-1"
-        title="KeyboardArrowUp"
-        data-ga-event-category="material-icons"
-        data-ga-event-action="click"
-        data-ga-event-label="KeyboardArrowUp"
-      >
-        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
-      </svg>
     </>
   );
 }

@@ -14,23 +14,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const API_URL = 'http://www.json-generator.com/api/json/get/ceesmrUZnS?indent=2'
+
 export default function Main() {
   const classes = useStyles();
-  const [url, setUrl] = useState('http://www.json-generator.com/api/json/get/ceesmrUZnS?indent=2');
   const [data, setData] = useState([]);
   const [length, setLength] = useState(10);
-  const [isFetching, setIsFetching] = useInfiniteScroll(moreData);
+  const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreData);
 
   const loadData = () => {
     axios
-      .get(url)
+      .get(API_URL)
       .then((res) => {
         setData(res.data.slice(0, length));
       });
   };
-  function moreData() {
+  function fetchMoreData() {
     axios
-      .get(url)
+      .get(API_URL)
       .then((res) => {
         setData([...data,...res.data.slice(length, length + 4)]);
         if (length <= data.length) {
@@ -48,8 +49,8 @@ export default function Main() {
     <Container className={classes.newsContainer} maxWidth="lg">
       <Grid container spacing={6} justify="center">
         {data.length === 0
-          ? (<Skeletons />)
-          : (data.map((item) => (
+          ? <Skeletons />
+          : data.map((item) => (
             <NewsCard
               key={item.key}
               title={item.title}
@@ -57,7 +58,7 @@ export default function Main() {
               image={item.image}
               date={item.date}
             />
-          )))}
+          ))}
       </Grid>
     </Container>
   );

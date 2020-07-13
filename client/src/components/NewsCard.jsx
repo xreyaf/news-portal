@@ -22,6 +22,7 @@ const News = ({
   title, description, image, date,
 }) => {
   const classes = useStyles();
+  
   return (
     <Grid item xs={11} md={6} lg={6}>
       <Card className={classes.card}>
