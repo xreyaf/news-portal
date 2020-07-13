@@ -14,10 +14,11 @@ namespace NewsPortalWebApi.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Title = table.Column<string>(type: "text", nullable: true),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    NewsImage = table.Column<string>(type: "text", nullable: true),
+                    NewsImage = table.Column<byte[]>(type: "bytea", nullable: true),
                     MainText = table.Column<string>(type: "text", nullable: true),
-                    CreationDataTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    ChengingDataTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                    Relevancy = table.Column<bool>(type: "boolean", nullable: false),
+                    CreationDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    ChangingDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {

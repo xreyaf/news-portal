@@ -15,23 +15,39 @@ using Microsoft.OpenApi.Models;
 using NewsPortalWebApi.Data_Access.EFCore;
 using NewsPortalWebApi.Data_Access.EFCore.Repositories;
 using NewsPortalWebApi.Data_Access.Interfaces;
+using NewsPortalWebApi.Business_Logic.Inerfaces;
+using NewsPortalWebApi.Business_Logic.DTO;
+using NewsPortalWebApi.Business_Logic.Services;
 
 namespace NewsPortalWebApi
 {
+    /// <summary>
+    /// Класс запуска для веб хоста
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Конструктор класса запуска
+        /// </summary>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// Этот метод вызывается во время выполнения. Используйте этот метод для добавления сервисов в контейнер.
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {       
 
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
+
+            services.AddScoped<INewsService<NewsShortDto>, NewsServices>();
 
             services.AddControllers();
 
@@ -50,7 +66,11 @@ namespace NewsPortalWebApi
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// Этот метод вызывается во время выполнения. Используйте этот метод для настройки конвейера HTTP-запроса.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

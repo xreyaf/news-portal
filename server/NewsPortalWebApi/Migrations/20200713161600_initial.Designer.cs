@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NewsPortalWebApi.Migrations
 {
     [DbContext(typeof(NewsPortalWebApiContext))]
-    [Migration("20200711020935_addedRelevancy")]
-    partial class addedRelevancy
+    [Migration("20200713161600_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,16 +21,16 @@ namespace NewsPortalWebApi.Migrations
                 .HasAnnotation("ProductVersion", "5.0.0-preview.6.20312.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("NewsPortalWebApi.News", b =>
+            modelBuilder.Entity("NewsPortalWebApi.Data_Access.Models.News", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("ChengingDataTime")
+                    b.Property<DateTime>("ChangingDateTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<DateTime>("CreationDataTime")
+                    b.Property<DateTime>("CreationDateTime")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
@@ -39,8 +39,8 @@ namespace NewsPortalWebApi.Migrations
                     b.Property<string>("MainText")
                         .HasColumnType("text");
 
-                    b.Property<string>("NewsImage")
-                        .HasColumnType("text");
+                    b.Property<byte[]>("NewsImage")
+                        .HasColumnType("bytea");
 
                     b.Property<bool>("Relevancy")
                         .HasColumnType("boolean");

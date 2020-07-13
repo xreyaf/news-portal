@@ -11,23 +11,53 @@ using System.Threading.Tasks;
 
 namespace NewsPortalWebApi.Business_Logic.Services
 {
-    public class NewsServices : INewsService<NewsDetailDto>
+    /// <summary>
+    /// Класс служб для работы с новостями
+    /// </summary>
+    public class NewsServices : INewsService<NewsShortDto>
     {
+        /// <summary>
+        /// Создание служб по классу работы с репозиториями
+        /// </summary>
         IUnitOfWork Db { get; set; }
-
+        /// <summary>
+        /// Создание служб по классу работы с репозиториями
+        /// </summary>
+        /// <param name="entity"></param>
         public NewsServices(IUnitOfWork entity)
         {
             Db = entity;
         }
-        public NewsDetailDto GetNews(Guid Id)
+        /// <summary>
+        /// Метод получения новости по Id
+        /// </summary>
+        /// <param name="Id">
+        /// Id новости
+        /// </param>
+        /// <remarks>
+        /// Происходит проецирование модели News на NewsDetailDTO
+        /// </remarks>
+        /// <returns>
+        /// Возвращает новость по ее Id
+        /// </returns>
+        public NewsShortDto GetNews(Guid Id)
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsDetailDto>()).CreateMapper();
-            return mapper.Map<News, NewsDetailDto>(Db.NewsRep.Get(Id));
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsShortDto>()).CreateMapper();
+            return mapper.Map<News, NewsShortDto>(Db.NewsRep.Get(Id));
         }
-        public IEnumerable<NewsDetailDto> GetAllNews()
+        /// <summary>
+        /// Метод получения всех новостей
+        /// </summary>
+        /// <remarks>
+        /// Происходит проецирование модели News на NewsDetailDTO
+        /// </remarks>
+        /// <returns>
+        /// Возвращает все новости
+        /// </returns>
+        public IEnumerable<NewsShortDto> GetAllNews()
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsDetailDto>()).CreateMapper();
-            return mapper.Map<IEnumerable<News>, List<NewsDetailDto>>(Db.NewsRep.GetAll());
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsShortDto>()).CreateMapper();
+            return mapper.Map<IEnumerable<News>, List<NewsShortDto>>(Db.NewsRep.GetAll());
         }
     }
 }
