@@ -47,7 +47,7 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
         /// <returns>
         /// Возвращает новость по Id
         /// </returns>
-        [HttpGet("{id}")]
+        [HttpGet("id")]
         public NewsShortDto GetNews(Guid Id)
         {
             return newsService.GetNews(Id);
