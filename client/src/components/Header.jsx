@@ -59,7 +59,7 @@ export default function Header() {
 
   return (
     <>
-      <Toolbar className={classes.toolbar}>
+      <Toolbar className={classes.toolbar} id="back-to-top-anchor">
         <Link href="/" underline="none">
           <Button className={classes.HomeBtn} size="small">
             Home
