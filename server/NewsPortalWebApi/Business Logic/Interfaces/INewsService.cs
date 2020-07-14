@@ -8,25 +8,29 @@ namespace NewsPortalWebApi.Business_Logic.Inerfaces
     /// <summary>
     /// Интерфейс служб для работы с новостями
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public interface INewsService<out T> where T : class
+    /// <typeparam name="TShort"></typeparam>
+    /// <typeparam name="TDetail"></typeparam>
+    public interface INewsService<TShort, TDetail> 
+        where TShort : class
+        where TDetail : class
+
     {
         /// <summary>
-        /// Получение новости по Id
+        /// Получение новости по id
         /// </summary>
-        /// <param name="Id">
-        /// Id новости
+        /// <param name="id">
+        /// id новости
         /// </param>
         /// <returns>
         /// Возвращает новость
         /// </returns>
-        T GetNews(Guid id);
+        TDetail GetNews(Guid id);
         /// <summary>
         /// Получение всех новостей
         /// </summary>
         /// <returns>
         /// Возвращение всех новостей
         /// </returns>
-        IEnumerable<T> GetAllNews();
+        IEnumerable<TShort> GetAllNews();
     }
 }

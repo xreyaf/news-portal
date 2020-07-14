@@ -11,7 +11,7 @@ namespace NewsPortalWebApi.Migrations
                 name: "News",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
                     Title = table.Column<string>(type: "text", nullable: true),
                     Description = table.Column<string>(type: "text", nullable: true),
                     NewsImage = table.Column<byte[]>(type: "bytea", nullable: true),
@@ -22,7 +22,7 @@ namespace NewsPortalWebApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_News", x => x.Id);
+                    table.PrimaryKey("PK_News", x => x.id);
                 });
         }
 

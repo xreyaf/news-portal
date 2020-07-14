@@ -15,7 +15,7 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
     public class EFUnitOfWork : IUnitOfWork
     {
         private readonly NewsPortalWebApiContext _db;
-        private readonly IRepository<News> _newsRepository;
+        private IRepository<News> _newsRepository;
 
         /// <summary>
         /// Конструктор класса для работы репозитория
@@ -28,10 +28,11 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
             _db = context;
         }
         /// <summary>
-        /// Создание репозитория
+        /// получение репозитория
         /// </summary>
         public IRepository<News> NewsRep
-        { get
+        { 
+            get
             {
                 if (_newsRepository == null)
                     _newsRepository = new NewsRepository(_db);

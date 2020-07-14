@@ -13,6 +13,6 @@ namespace NewsPortalWebApi.Data_Access.Interfaces
         /// <summary>
         /// Свойство идентификатора сущности
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid id { get; set; }
     }
 }

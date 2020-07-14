@@ -23,7 +23,7 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         /// </param>
         public NewsRepository(NewsPortalWebApiContext context)
         {
-            this._context = context;
+            _context = context;
         }
         /// <summary>
         /// Метод для получения всех новостей
@@ -57,7 +57,7 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
             _context.Add(entity);
         }
         /// <summary>
-        /// Удаляет новость по Id
+        /// Удаляет новость по id
         /// </summary>
         /// <param name="id">
         /// Id новости

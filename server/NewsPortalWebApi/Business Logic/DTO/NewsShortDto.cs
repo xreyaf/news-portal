@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 namespace NewsPortalWebApi.Business_Logic.DTO
 {
     /// <summary>
-    /// Измененный класс передачи данных
+    /// DTO с укороченной информацией о новости
     /// </summary>
     public class NewsShortDto
     {
         /// <summary>
         /// Идентификатор новости
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid id { get; set; }
         /// <summary>
         /// Свойство названия статьи
         /// </summary>
@@ -25,10 +25,6 @@ namespace NewsPortalWebApi.Business_Logic.DTO
         /// <summary>
         /// Свойство изображения новости
         /// </summary>
-        public byte[] NewsImage { get; set; }
-        /// <summary>
-        /// Свойство основного текста новости
-        /// </summary>
-        
+        public byte[] NewsImage { get; set; }       
     }
 }

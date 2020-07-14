@@ -21,7 +21,7 @@ namespace NewsPortalWebApi.Migrations
 
             modelBuilder.Entity("NewsPortalWebApi.Data_Access.Models.News", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -46,7 +46,7 @@ namespace NewsPortalWebApi.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("News");
                 });

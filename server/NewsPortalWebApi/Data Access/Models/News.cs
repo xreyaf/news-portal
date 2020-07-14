@@ -15,7 +15,7 @@ namespace NewsPortalWebApi.Data_Access.Models
         /// <summary>
         /// Свойство идентификатора новости
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid id { get; set; }
         /// <summary>
         /// Свойство названия статьи
         /// </summary>

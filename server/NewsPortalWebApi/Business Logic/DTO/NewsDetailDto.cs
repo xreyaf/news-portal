@@ -11,11 +11,9 @@ namespace NewsPortalWebApi.Business_Logic.DTO
     public class NewsDetailDto
     {
         /// <summary>
-
-   
         /// Идентификатор новости
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid id { get; set; }
         /// <summary>
         /// Название статьи
         /// </summary>
@@ -25,25 +23,16 @@ namespace NewsPortalWebApi.Business_Logic.DTO
         /// </summary>
         public string Description { get; set; }
         /// <summary>
-        /// Свойство изображения новости
-        /// </summary>
-        public byte[] NewsImage { get; set; }
-        /// <summary>
         /// Свойство основного текста новости
         /// </summary>
         public string MainText { get; set; }
         /// <summary>
+        /// Свойство изображения новости
+        /// </summary>
+        public byte[] NewsImage { get; set; }
+        /// <summary>
         /// Свойство актуальности новости
         /// </summary>
-        public bool Relevancy { get; set; }
-        /// <summary>
-        /// Свойство даты создания статьи
-        /// </summary>
         public DateTime CreationDateTime { get; set; }
-        /// <summary>
-        /// Свойство даты изменения новости
-        /// </summary>
-        public DateTime ChangingDateTime { get; set; }
-
     }
 }

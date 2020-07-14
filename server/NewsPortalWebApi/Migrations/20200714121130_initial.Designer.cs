@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NewsPortalWebApi.Migrations
 {
     [DbContext(typeof(NewsPortalWebApiContext))]
-    [Migration("20200713161600_initial")]
+    [Migration("20200714121130_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace NewsPortalWebApi.Migrations
 
             modelBuilder.Entity("NewsPortalWebApi.Data_Access.Models.News", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -48,7 +48,7 @@ namespace NewsPortalWebApi.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("News");
                 });
