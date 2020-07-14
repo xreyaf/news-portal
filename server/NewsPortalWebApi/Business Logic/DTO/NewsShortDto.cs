@@ -13,7 +13,7 @@ namespace NewsPortalWebApi.Business_Logic.DTO
         /// <summary>
         /// Идентификатор новости
         /// </summary>
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
         /// <summary>
         /// Свойство названия статьи
         /// </summary>
@@ -25,6 +25,14 @@ namespace NewsPortalWebApi.Business_Logic.DTO
         /// <summary>
         /// Свойство изображения новости
         /// </summary>
-        public byte[] NewsImage { get; set; }       
+        public byte[] NewsImage { get; set; }
+        /// <summary>
+        /// Дата создания статьи
+        /// </summary>
+        public DateTime CreationDateTime { get; set; }
+        /// <summary>
+        /// имя автора
+        /// </summary>
+        public string AuthorName { get; set; }
     }
 }

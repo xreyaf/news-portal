@@ -18,6 +18,7 @@ using NewsPortalWebApi.Data_Access.Interfaces;
 using NewsPortalWebApi.Business_Logic.Inerfaces;
 using NewsPortalWebApi.Business_Logic.DTO;
 using NewsPortalWebApi.Business_Logic.Services;
+using NewsPortalWebApi.Data_Access.Models;
 
 namespace NewsPortalWebApi
 {
@@ -47,7 +48,7 @@ namespace NewsPortalWebApi
 
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 
-            services.AddScoped<INewsService<NewsShortDto, NewsDetailDto>, NewsServices>();
+            services.AddScoped<INewsService<NewsShortDto, NewsDetailDto, AuthorDTO>, NewsServices>();
 
             services.AddControllers();
 
@@ -62,6 +63,7 @@ namespace NewsPortalWebApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(name: "v1", new OpenApiInfo { Title = "News Web Api", Version = "v1"});
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
 
         }

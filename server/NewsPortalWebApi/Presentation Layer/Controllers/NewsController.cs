@@ -21,11 +21,11 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
     [Route("api/[controller]")]
     public class NewsController : ControllerBase
     {
-        private readonly INewsService<NewsShortDto, NewsDetailDto> _newsService;
+        private readonly INewsService<NewsShortDto, NewsDetailDto, AuthorDTO> _newsService;
         /// <summary>
         /// Конструктор контроллера
         /// </summary>
-        public NewsController(INewsService<NewsShortDto, NewsDetailDto> services)
+        public NewsController(INewsService<NewsShortDto, NewsDetailDto, AuthorDTO> services)
         {
             _newsService = services;
         }
@@ -52,6 +52,20 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
         public NewsDetailDto GetNews(Guid id)
         {
             return _newsService.GetNews(id);
+        }
+        /// <summary>
+        /// представление имени автора по id
+        /// </summary>
+        /// <param name="id">
+        /// id автора
+        /// </param>
+        /// <returns>
+        /// Возвращает имя автора по id
+        /// </returns>
+        [HttpGet("id")]
+        public string GetAuthorName(Guid id)
+        {
+            return _newsService.GetAuthorName(id).Name;
         }
     }
 }

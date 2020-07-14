@@ -14,9 +14,13 @@ namespace NewsPortalWebApi.Data_Access.EFCore
     public class NewsPortalWebApiContext : DbContext
     {
         /// <summary>
-        /// Создание набора данных
+        /// Создание набора данных о новостях
         /// </summary>
         public DbSet<News> News { get; set; }
+        /// <summary>
+        /// Создание набора данных об авторах
+        /// </summary>
+        public DbSet<Author> Authors { get; set; }
         /// <summary>
         /// Получение контекста из базы данных
         /// </summary>

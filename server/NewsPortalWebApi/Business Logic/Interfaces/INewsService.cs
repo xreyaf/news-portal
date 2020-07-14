@@ -10,10 +10,11 @@ namespace NewsPortalWebApi.Business_Logic.Inerfaces
     /// </summary>
     /// <typeparam name="TShort"></typeparam>
     /// <typeparam name="TDetail"></typeparam>
-    public interface INewsService<TShort, TDetail> 
+    /// <typeparam name="TAuthor"></typeparam>
+    public interface INewsService<TShort, TDetail, TAuthor> 
         where TShort : class
         where TDetail : class
-
+        where TAuthor : class
     {
         /// <summary>
         /// Получение новости по id
@@ -32,5 +33,11 @@ namespace NewsPortalWebApi.Business_Logic.Inerfaces
         /// Возвращение всех новостей
         /// </returns>
         IEnumerable<TShort> GetAllNews();
+        /// <summary>
+        /// Получение имени автора по id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        TAuthor GetAuthorName(Guid id);
     }
 }

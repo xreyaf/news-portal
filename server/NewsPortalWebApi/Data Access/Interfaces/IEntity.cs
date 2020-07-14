@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 namespace NewsPortalWebApi.Data_Access.Interfaces
 {
     /// <summary>
-    /// Интерфейс для сущности
+    /// сущность
     /// </summary>
     public interface IEntity
     {
         /// <summary>
-        /// Свойство идентификатора сущности
+        /// идентификатор сущности
         /// </summary>
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
     }
 }

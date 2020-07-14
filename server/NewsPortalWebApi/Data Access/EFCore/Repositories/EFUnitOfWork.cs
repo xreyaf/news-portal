@@ -16,6 +16,7 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
     {
         private readonly NewsPortalWebApiContext _db;
         private IRepository<News> _newsRepository;
+        private IRepository<Author> _authorsRepository;
 
         /// <summary>
         /// Конструктор класса для работы репозитория
@@ -28,15 +29,27 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
             _db = context;
         }
         /// <summary>
-        /// получение репозитория
+        /// Получение репозитория новостей
         /// </summary>
-        public IRepository<News> NewsRep
+        public IRepository<News> GetNewsRep
         { 
             get
             {
                 if (_newsRepository == null)
                     _newsRepository = new NewsRepository(_db);
                 return _newsRepository;
+            }
+        }
+        /// <summary>
+        /// Получение репозитория новостей
+        /// </summary>
+        public IRepository<Author> GetAuthorsRep
+        {
+            get
+            {
+                if (_authorsRepository == null)
+                    _authorsRepository = new AuthorsRepository(_db);
+                return _authorsRepository;
             }
         }
         /// <summary>

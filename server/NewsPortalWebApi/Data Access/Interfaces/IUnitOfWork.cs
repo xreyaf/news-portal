@@ -9,14 +9,18 @@ namespace NewsPortalWebApi.Data_Access.Interfaces
     /// <summary>
     /// Интерфейс для работы с репозиториями
     /// </summary>
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable 
     {
         /// <summary>
-        /// Свойство получения репозитория
+        /// получение репозитория новостей
         /// </summary>
-        IRepository<News> NewsRep { get; }
+        IRepository<News> GetNewsRep { get; }
         /// <summary>
-        /// Метод сохранения изменений
+        /// получение репозитория авторов
+        /// </summary>
+        IRepository<Author> GetAuthorsRep { get; }
+        /// <summary>
+        /// сохранение изменений
         /// </summary>
         void Save();
     }

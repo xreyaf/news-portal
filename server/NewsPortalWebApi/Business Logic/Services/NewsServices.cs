@@ -14,7 +14,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
     /// <summary>
     /// Класс служб для работы с новостями
     /// </summary>
-    public class NewsServices : INewsService<NewsShortDto, NewsDetailDto>
+    public class NewsServices : INewsService<NewsShortDto, NewsDetailDto, AuthorDTO>
     {
         /// <summary>
         /// Создание служб по классу работы с репозиториями
@@ -41,28 +41,30 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// <returns>
         /// Возвращает новость по ее id
         /// </returns>
-        NewsDetailDto INewsService<NewsShortDto, NewsDetailDto>.GetNews(Guid id)
+        NewsDetailDto INewsService<NewsShortDto, NewsDetailDto, AuthorDTO>.GetNews(Guid id)
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsDetailDto>()).CreateMapper();
-            return mapper.Map<News, NewsDetailDto>(_db.NewsRep.Get(id));
+            return mapper.Map<News, NewsDetailDto>(_db.GetNewsRep.Get(id));
         }
         /// <summary>
         /// Метод получения всех новостей
         /// </summary>
         /// <remarks>
-        /// Происходит проецирование модели News на NewsShortDTO
+        /// проецирование модели News на NewsShortDTO
         /// </remarks>
         /// <returns>
         /// Возвращает все новости в коротком формате
         /// </returns>
-        IEnumerable<NewsShortDto> INewsService<NewsShortDto, NewsDetailDto>.GetAllNews()
+        IEnumerable<NewsShortDto> INewsService<NewsShortDto, NewsDetailDto, AuthorDTO>.GetAllNews()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsShortDto>()).CreateMapper();
-            return mapper.Map<IEnumerable<News>, List<NewsShortDto>>(_db.NewsRep.GetAll());
+            return mapper.Map<IEnumerable<News>, List<NewsShortDto>>(_db.GetNewsRep.GetAll());
         }
-
         
-
-        
+        AuthorDTO INewsService<NewsShortDto, NewsDetailDto, AuthorDTO>.GetAuthorName(Guid id)
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Author, AuthorDTO>()).CreateMapper();
+            return mapper.Map<Author, AuthorDTO>(_db.GetAuthorsRep.Get(id));
+        }
     }
 }

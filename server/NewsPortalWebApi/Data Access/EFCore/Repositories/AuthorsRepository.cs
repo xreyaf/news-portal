@@ -6,12 +6,13 @@ using Microsoft.EntityFrameworkCore;
 using NewsPortalWebApi.Data_Access.Interfaces;
 using NewsPortalWebApi.Data_Access.Models;
 
+
 namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
 {
     /// <summary>
-    /// Класс репозитория для новостей 
+    /// Класс репозитория авторов
     /// </summary>
-    public class NewsRepository : IRepository<News>        
+    public class AuthorsRepository : IRepository<Author>
     {
         private readonly NewsPortalWebApiContext _context;
 
@@ -21,58 +22,59 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         /// <param name="context">
         /// Аргументом является контекст из базы данных
         /// </param>
-        public NewsRepository(NewsPortalWebApiContext context)
+        public AuthorsRepository(NewsPortalWebApiContext context)
         {
             _context = context;
         }
         /// <summary>
-        /// Метод для получения всех новостей
+        /// Метод для получения всех авторов
         /// </summary>
         /// <returns>
-        /// Возвращает все новости из базы данных
+        /// Возвращает всех авторов из базы данных
         /// </returns>
-        public IEnumerable<News> GetAll()
+        public IEnumerable<Author> GetAll()
         {
-            return _context.News;
+            return _context.Authors;
         }
         /// <summary>
-        /// Метод для получения новости по Id
+        /// Метод для получения автора по id
         /// </summary>
         /// <param name="id">
-        /// Id нужной новости
+        /// id нужного автора
         /// </param>
         /// <returns>
-        /// Возвращает нужную новость</returns>
-        public News Get(Guid id)
+        /// Возвращает нужного автора</returns>
+        public Author Get(Guid id)
         {
-            return _context.News.Find(id);
+            return _context.Authors.Find(id);
         }
+        
         /// <summary>
-        /// Добавляет новость в базу данных
+        /// Добавляет автора в базу данных
         /// </summary>
         /// <param name="entity">
         /// </param>
-        public void Add(News entity)
+        public void Add(Author entity)
         {
             _context.Add(entity);
         }
         /// <summary>
-        /// Удаляет новость по id
+        /// Удаляет автора по id
         /// </summary>
         /// <param name="id">
-        /// Id новости
+        /// id автора
         /// </param>
         public void Delete(Guid id)
         {
-            News entity = _context.News.Find(id);
+            Author entity = _context.Authors.Find(id);
             if (entity != null)
-                _context.News.Remove(entity);
+                _context.Authors.Remove(entity);
         }
         /// <summary>
-        /// Изменяет новость
+        /// Изменяет автора
         /// </summary>
         /// <param name="entity"></param>
-        public void Update(News entity)
+        public void Update(Author entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
         }

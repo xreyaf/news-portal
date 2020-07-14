@@ -13,36 +13,40 @@ namespace NewsPortalWebApi.Data_Access.Models
     public class News : IEntity
     {
         /// <summary>
-        /// Свойство идентификатора новости
+        /// идентификатор новости
         /// </summary>
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
         /// <summary>
-        /// Свойство названия статьи
+        /// название статьи
         /// </summary>
         public string Title { get; set; }
         /// <summary>
-        /// Свойство краткого описания статьи
+        /// краткое описание статьи
         /// </summary>
         public string Description { get; set; }
         /// <summary>
-        /// Свойство изображения новости
+        /// изображение новости
         /// </summary>
         public byte[] NewsImage { get; set; }
         /// <summary>
-        /// Свойство основного текста новости
+        /// основной текст новости
         /// </summary>
         public string MainText { get; set; }
         /// <summary>
-        /// Свойство актуальности новости
+        /// актуальность новости
         /// </summary>
         public bool Relevancy { get; set; }
         /// <summary>
-        /// Свойство даты создания статьи
+        /// дата создания статьи
         /// </summary>
         public DateTime CreationDateTime { get; set; }
         /// <summary>
-        /// Свойство даты изменения новости
+        /// дата изменения новости
         /// </summary>
         public DateTime ChangingDateTime { get; set; }
+        /// <summary>
+        /// автор статьи
+        /// </summary>
+        public Author Author { get; set; }
     }
 }

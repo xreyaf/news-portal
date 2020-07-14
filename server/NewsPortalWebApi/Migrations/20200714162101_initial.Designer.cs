@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NewsPortalWebApi.Migrations
 {
     [DbContext(typeof(NewsPortalWebApiContext))]
-    [Migration("20200714121130_initial")]
+    [Migration("20200714162101_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,10 +21,27 @@ namespace NewsPortalWebApi.Migrations
                 .HasAnnotation("ProductVersion", "5.0.0-preview.6.20312.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            modelBuilder.Entity("NewsPortalWebApi.Data_Access.Models.Author", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Authors");
+                });
+
             modelBuilder.Entity("NewsPortalWebApi.Data_Access.Models.News", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("AuthorId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("ChangingDateTime")
@@ -48,9 +65,18 @@ namespace NewsPortalWebApi.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("News");
+                });
+
+            modelBuilder.Entity("NewsPortalWebApi.Data_Access.Models.News", b =>
+                {
+                    b.HasOne("NewsPortalWebApi.Data_Access.Models.Author", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
                 });
 #pragma warning restore 612, 618
         }
