@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { Grid, Card, CardActionArea, CardContent, CardMedia } from './';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   card: {
     color: 'black',
     display: 'flex',
@@ -12,7 +12,12 @@ const useStyles = makeStyles({
     height: 270,
     backgroundRepeat: 'no-repeat',
   },
-});
+  title: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1.6rem',
+    },
+  },
+}));
 
 const News = ({ title, description, image, date }) => {
   const classes = useStyles();
@@ -23,7 +28,12 @@ const News = ({ title, description, image, date }) => {
         <CardActionArea>
           <CardMedia className={classes.media} image={image} />
           <CardContent>
-            <Typography gutterBottom variant="h4" component="h1">
+            <Typography
+              gutterBottom
+              variant="h4"
+              component="h1"
+              className={classes.title}
+            >
               {title}
             </Typography>
             <Typography

@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
       '"Segoe UI Symbol"',
     ].join(','),
     margin: theme.spacing(1, 0),
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '2rem',
+    },
   },
   toolbarSecondary: {
     justifyContent: 'space-between',
