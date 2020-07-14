@@ -7,7 +7,7 @@ import {
   makeStyles,
 } from '@material-ui/core/styles';
 import { CssBaseline } from './components';
-import { Header, Main, Footer } from './components';
+import { Header, Main, Footer, News } from './components';
 import { NewsCard } from './components';
 import { useScrollTrigger } from './components';
 import { Zoom } from './components';
@@ -86,7 +86,7 @@ export default function App() {
         <Header />
         <Switch>
           <Route path="/" component={Main} />
-          <Route path="/news/:title" component={NewsCard} />
+          <Route path="/news/:_id" component={News} />
         </Switch>
         <Footer />
       </BrowserRouter>
