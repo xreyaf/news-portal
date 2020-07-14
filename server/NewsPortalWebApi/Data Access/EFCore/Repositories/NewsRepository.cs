@@ -13,7 +13,8 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
     /// </summary>
     public class NewsRepository : IRepository<News>        
     {
-        private readonly NewsPortalWebApiContext context;
+        private readonly NewsPortalWebApiContext _context;
+
         /// <summary>
         /// Констурктор репозитория
         /// </summary>
@@ -22,7 +23,7 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         /// </param>
         public NewsRepository(NewsPortalWebApiContext context)
         {
-            this.context = context;
+            this._context = context;
         }
         /// <summary>
         /// Метод для получения всех новостей
@@ -32,7 +33,7 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         /// </returns>
         public IEnumerable<News> GetAll()
         {
-            return context.News;
+            return _context.News;
         }
         /// <summary>
         /// Метод для получения новости по Id
@@ -44,7 +45,7 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         /// Возвращает нужную новость</returns>
         public News Get(Guid id)
         {
-            return context.News.Find(id);
+            return _context.News.Find(id);
         }
         /// <summary>
         /// Добавляет новость в базу данных
@@ -53,7 +54,7 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         /// </param>
         public void Add(News entity)
         {
-            context.Add(entity);
+            _context.Add(entity);
         }
         /// <summary>
         /// Удаляет новость по Id
@@ -63,9 +64,9 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         /// </param>
         public void Delete(Guid id)
         {
-            News entity = context.News.Find(id);
+            News entity = _context.News.Find(id);
             if (entity != null)
-                context.News.Remove(entity);
+                _context.News.Remove(entity);
         }
         /// <summary>
         /// Изменяет новость
@@ -73,7 +74,7 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         /// <param name="entity"></param>
         public void Update(News entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
+            _context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

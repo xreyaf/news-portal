@@ -9,7 +9,7 @@ namespace NewsPortalWebApi.Business_Logic.Inerfaces
     /// Интерфейс служб для работы с новостями
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface INewsService<T> where T : class
+    public interface INewsService<out T> where T : class
     {
         /// <summary>
         /// Получение новости по Id
@@ -20,7 +20,7 @@ namespace NewsPortalWebApi.Business_Logic.Inerfaces
         /// <returns>
         /// Возвращает новость
         /// </returns>
-        T GetNews(Guid Id);
+        T GetNews(Guid id);
         /// <summary>
         /// Получение всех новостей
         /// </summary>

@@ -21,13 +21,13 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
     [Route("api/[controller]")]
     public class NewsController : ControllerBase
     {
-        private readonly INewsService<NewsShortDto> newsService;
+        private readonly INewsService<NewsShortDto> _newsService;
         /// <summary>
         /// Конструктор контроллера
         /// </summary>
         public NewsController(INewsService<NewsShortDto> services)
         {
-            newsService = services;
+            _newsService = services;
         }
         /// <summary>
         /// Метод представления всех новостей
@@ -36,8 +36,9 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
         [HttpGet]
         public IEnumerable<NewsShortDto> GetAllNews()
         {
-            return newsService.GetAllNews();
+            return _newsService.GetAllNews();
         }
+
         /// <summary>
         /// Метод представления новости по Id
         /// </summary>
@@ -48,9 +49,9 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
         /// Возвращает новость по Id
         /// </returns>
         [HttpGet("id")]
-        public NewsShortDto GetNews(Guid Id)
+        public NewsDetailDto GetNews(Guid id)
         {
-            return newsService.GetNews(Id);
+            return _newsService.GetNews(id);
         }
     }
 }

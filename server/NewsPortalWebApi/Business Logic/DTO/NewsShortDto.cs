@@ -11,7 +11,7 @@ namespace NewsPortalWebApi.Business_Logic.DTO
     public class NewsShortDto
     {
         /// <summary>
-        /// Свойство идентификатора новости
+        /// Идентификатор новости
         /// </summary>
         public Guid Id { get; set; }
         /// <summary>

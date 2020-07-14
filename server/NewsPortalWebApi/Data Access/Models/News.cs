@@ -44,6 +44,5 @@ namespace NewsPortalWebApi.Data_Access.Models
         /// Свойство даты изменения новости
         /// </summary>
         public DateTime ChangingDateTime { get; set; }
-
     }
 }

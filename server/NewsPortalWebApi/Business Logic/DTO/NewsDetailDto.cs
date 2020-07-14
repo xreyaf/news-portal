@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 namespace NewsPortalWebApi.Business_Logic.DTO
 {
     /// <summary>
-    /// Класс передачи данных новости
+    /// DTO с полной информацией о новости
     /// </summary>
     public class NewsDetailDto
     {
         /// <summary>
-        /// Свойство идентификатора новости
+
+   
+        /// Идентификатор новости
         /// </summary>
         public Guid Id { get; set; }
         /// <summary>
-        /// Свойство названия статьи
+        /// Название статьи
         /// </summary>
         public string Title { get; set; }
         /// <summary>
