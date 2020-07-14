@@ -1,12 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import amber from '@material-ui/core/colors/amber';
-import grey from '@material-ui/core/colors/grey';
-
+import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
+import Toolbar from '@material-ui/core/Toolbar';
+import { amber, grey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -48,9 +46,9 @@ const useStyles = makeStyles((theme) => ({
   SignInBtn: {
     border: '0px',
     fontSize: '18px',
-    color: amber [700],
+    color: amber[800],
     '&:hover': {
-      color: amber [500],
+      color: amber[700],
       transition: 'all 0.2s ease-in',
     },
   },
@@ -58,11 +56,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
+
   return (
     <>
       <Toolbar className={classes.toolbar}>
         <Link href="/" underline="none">
-          <Button className={classes.HomeBtn} size="small">Home</Button>
+          <Button className={classes.HomeBtn} size="small">
+            Home
+          </Button>
         </Link>
         <Typography
           variant="h3"
@@ -77,8 +78,7 @@ export default function Header() {
         <Button className={classes.SignInBtn} variant="outlined" size="small">
           Sign in
         </Button>
-      </Toolbar>
-      {' '}
+      </Toolbar>{' '}
     </>
   );
 }

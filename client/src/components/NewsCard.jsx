@@ -1,11 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
+import { Grid, Card, CardActionArea, CardContent, CardMedia } from './';
 
 const useStyles = makeStyles({
   card: {
@@ -18,11 +14,9 @@ const useStyles = makeStyles({
   },
 });
 
-const News = ({
-  title, description, image, date,
-}) => {
+const News = ({ title, description, image, date }) => {
   const classes = useStyles();
-  
+
   return (
     <Grid item xs={11} md={6} lg={6}>
       <Card className={classes.card}>
@@ -40,11 +34,7 @@ const News = ({
             >
               {description}
             </Typography>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              component="p"
-            >
+            <Typography variant="body2" color="textSecondary" component="p">
               {date}
             </Typography>
           </CardContent>

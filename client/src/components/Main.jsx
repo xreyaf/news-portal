@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const API_URL = 'http://www.json-generator.com/api/json/get/ceesmrUZnS?indent=2'
+const API_URL =
+  'http://www.json-generator.com/api/json/get/ceesmrUZnS?indent=2';
 
 export default function Main() {
   const classes = useStyles();
@@ -23,22 +24,18 @@ export default function Main() {
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreData);
 
   const loadData = () => {
-    axios
-      .get(API_URL)
-      .then((res) => {
-        setData(res.data.slice(0, length));
-      });
+    axios.get(API_URL).then((res) => {
+      setData(res.data.slice(0, length));
+    });
   };
   function fetchMoreData() {
-    axios
-      .get(API_URL)
-      .then((res) => {
-        setData([...data,...res.data.slice(length, length + 4)]);
-        if (length <= data.length) {
-          setLength(length + 4);
-          setIsFetching(false);
-        }
-      });
+    axios.get(API_URL).then((res) => {
+      setData([...data, ...res.data.slice(length, length + 4)]);
+      if (length <= data.length) {
+        setLength(length + 4);
+        setIsFetching(false);
+      }
+    });
   }
 
   useEffect(() => {
@@ -48,9 +45,10 @@ export default function Main() {
   return (
     <Container className={classes.newsContainer} maxWidth="lg">
       <Grid container spacing={6} justify="center">
-        {data.length === 0
-          ? <Skeletons />
-          : data.map((item) => (
+        {data.length === 0 ? (
+          <Skeletons />
+        ) : (
+          data.map((item) => (
             <NewsCard
               key={item.key}
               title={item.title}
@@ -58,7 +56,8 @@ export default function Main() {
               image={item.image}
               date={item.date}
             />
-          ))}
+          ))
+        )}
       </Grid>
     </Container>
   );

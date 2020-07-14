@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
-import CssBaseline  from '@material-ui/core/CssBaseline';
+import {
+  createMuiTheme,
+  ThemeProvider,
+  makeStyles,
+} from '@material-ui/core/styles';
+import { CssBaseline } from './components';
 import { Header, Main, Footer } from './components';
 import { NewsCard } from './components';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import Zoom from '@material-ui/core/Zoom';
-import Fab from '@material-ui/core/Fab';
+import { useScrollTrigger } from './components';
+import { Zoom } from './components';
+import { Fab } from './components';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import grey from '@material-ui/core/colors/grey';
+import { grey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
   newsContainer: {
@@ -17,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '70vh',
   },
   scrollToTopButton: {
-    position: "fixed",
+    position: 'fixed',
     bottom: theme.spacing(2),
     right: theme.spacing(2),
     zIndex: '99999',
@@ -29,23 +33,25 @@ function ScrollTop(props) {
   const classes = useStyles();
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 100
+    threshold: 100,
   });
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     const anchor = (event.target.ownerDocument || document).querySelector(
-      "#back-to-top-anchor"
-      
+      '#back-to-top-anchor'
     );
-      console.log('нажата кнопка');
     if (anchor) {
-      anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+      anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
 
   return (
     <Zoom in={trigger}>
-      <div onClick={handleClick} role="presentation" className={classes.scrollToTopButton}>
+      <div
+        onClick={handleClick}
+        role="presentation"
+        className={classes.scrollToTopButton}
+      >
         {children}
       </div>
     </Zoom>
@@ -53,7 +59,7 @@ function ScrollTop(props) {
 }
 
 ScrollTop.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
 };
 
 export default function App() {
@@ -64,8 +70,6 @@ export default function App() {
       MuiCssBaseline: {
         '@global': {
           body: {
-            margin: '0',
-            fontFamily: 'Roboto',
             WebkitFontSmoothing: 'auto',
             backgroundColor: grey[900],
             color: grey[300],
@@ -74,7 +78,7 @@ export default function App() {
       },
     },
   });
-  
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -82,10 +86,7 @@ export default function App() {
         <Header />
         <Switch>
           <Route path="/" component={Main} />
-          <Route
-            path="/news/:title"
-            component={NewsCard}
-          />
+          <Route path="/news/:title" component={NewsCard} />
         </Switch>
         <Footer />
       </BrowserRouter>
