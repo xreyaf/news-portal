@@ -19,6 +19,5 @@ namespace NewsPortalWebApi.Data_Access.Models
         public bool Relevancy { get; set; }
         public DateTime CreationDataTime { get; set; }
         public DateTime ChengingDataTime { get; set; }
-
     }
 }

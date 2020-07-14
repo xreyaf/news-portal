@@ -10,35 +10,35 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
 {
     public class NewsRepository : IRepository<News>        
     {
-        private readonly NewsPortalWebApiContext context;
+        private readonly NewsPortalWebApiContext _context;
         public NewsRepository(NewsPortalWebApiContext context)
         {
-            this.context = context;
+            this._context = context;
         }
         public IEnumerable<News> GetAll()
         {
-            return context.News;
+            return _context.News;
         }
         public News Get(Guid id)
         {
-            return context.News.Find(id);
+            return _context.News.Find(id);
         }
 
         public void Add(News entity)
         {
-            context.Add(entity);
+            _context.Add(entity);
         }
 
         public void Delete(Guid id)
         {
-            News entity = context.News.Find(id);
+            News entity = _context.News.Find(id);
             if (entity != null)
-                context.News.Remove(entity);
+                _context.News.Remove(entity);
         }
 
         public void Update(News entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
+            _context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

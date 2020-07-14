@@ -18,22 +18,22 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
     [Route("api/[controller]")]
     public class NewsController : ControllerBase
     {
-        readonly INewsService<NewsDetailDto> newsService;
+        readonly INewsService<NewsDetailDto> _newsService;
         private readonly IUnitOfWork _unitOfWork;
         public NewsController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            newsService = new NewsServices(_unitOfWork);
+            _newsService = new NewsServices(_unitOfWork);
         }
         [HttpGet]
         public IEnumerable<NewsDetailDto> GetAllNews()
         {
-            return newsService.GetAllNews();
+            return _newsService.GetAllNews();
         }
         [HttpGet("{id}")]
-        public NewsDetailDto GetNews(Guid Id)
+        public NewsDetailDto GetNews(Guid id)
         {
-            return newsService.GetNews(Id);
+            return _newsService.GetNews(id);
         }
     }
 }

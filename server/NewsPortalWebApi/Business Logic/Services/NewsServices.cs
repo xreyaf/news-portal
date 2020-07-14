@@ -13,21 +13,21 @@ namespace NewsPortalWebApi.Business_Logic.Services
 {
     public class NewsServices : INewsService<NewsDetailDto>
     {
-        IUnitOfWork Db { get; set; }
+        private readonly IUnitOfWork _db;
 
         public NewsServices(IUnitOfWork entity)
         {
-            Db = entity;
+            _db = entity;
         }
-        public NewsDetailDto GetNews(Guid Id)
+        public NewsDetailDto GetNews(Guid id)
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsDetailDto>()).CreateMapper();
-            return mapper.Map<News, NewsDetailDto>(Db.NewsRep.Get(Id));
+            return mapper.Map<News, NewsDetailDto>(_db.NewsRep.Get(id));
         }
         public IEnumerable<NewsDetailDto> GetAllNews()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsDetailDto>()).CreateMapper();
-            return mapper.Map<IEnumerable<News>, List<NewsDetailDto>>(Db.NewsRep.GetAll());
+            return mapper.Map<IEnumerable<News>, List<NewsDetailDto>>(_db.NewsRep.GetAll());
         }
     }
 }

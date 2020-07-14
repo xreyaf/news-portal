@@ -5,9 +5,13 @@ using System.Threading.Tasks;
 
 namespace NewsPortalWebApi.Business_Logic.Inerfaces
 {
-    public interface INewsService<T> where T : class
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public interface INewsService<out T> where T : class
     {
-        T GetNews(Guid Id);
+        T GetNews(Guid id);
         IEnumerable<T> GetAllNews();
     }
 }
