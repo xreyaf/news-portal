@@ -11,26 +11,26 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
 {
     public class EFUnitOfWork : IUnitOfWork
     {
-        private readonly NewsPortalWebApiContext db;
-        private IRepository<News> newsRepository;
+        private readonly NewsPortalWebApiContext _db;
+        private readonly IRepository<News> _newsRepository;
 
         public EFUnitOfWork(NewsPortalWebApiContext context)
         {
-            db = context;
+            _db = context;
         }
 
         public IRepository<News> NewsRep
         { get
             {
-                if (newsRepository == null)
-                    newsRepository = new NewsRepository(db);
-                return newsRepository;
+                if (_newsRepository == null)
+                    _newsRepository = new NewsRepository(_db);
+                return _newsRepository;
             }
         }
 
         public void Save()
         {
-            db.SaveChanges();
+            _db.SaveChanges();
         }
 
         private bool disposed = false;
@@ -41,7 +41,7 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
             {
                 if (disposing)
                 {
-                    db.Dispose();
+                    _db.Dispose();
                 }
                 this.disposed = true;
             }
