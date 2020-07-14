@@ -5,9 +5,18 @@ using System.Threading.Tasks;
 
 namespace NewsPortalWebApi.Business_Logic.DTO
 {
+    /// <summary>
+    /// DTO с полной информацией о новости
+    /// </summary>
     public class NewsDetailDto
     {
+        /// <summary>
+        /// Идентификатор новости
+        /// </summary>
         public Guid Id { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Title { get; set; }
         public string Description { get; set; }
         public string NewsImage { get; set; }
