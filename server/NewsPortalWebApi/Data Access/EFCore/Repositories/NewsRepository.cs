@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +33,9 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         /// </returns>
         public IEnumerable<News> GetAll()
         {
-            return context.News;
+            IEnumerable<News> news = context.News;
+            //news.GroupBy(Func<;
+            return news;
         }
         /// <summary>
         /// Метод для получения новости по Id

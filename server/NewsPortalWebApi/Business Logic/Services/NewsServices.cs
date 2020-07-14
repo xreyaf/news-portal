@@ -14,7 +14,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
     /// <summary>
     /// Класс служб для работы с новостями
     /// </summary>
-    public class NewsServices : INewsService<NewsShortDto>
+    public class NewsServices : INewsService<NewsDetailDto>
     {
         /// <summary>
         /// Создание служб по классу работы с репозиториями
@@ -40,10 +40,10 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// <returns>
         /// Возвращает новость по ее Id
         /// </returns>
-        public NewsShortDto GetNews(Guid Id)
+        public NewsDetailDto GetNews(Guid Id)
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsShortDto>()).CreateMapper();
-            return mapper.Map<News, NewsShortDto>(Db.NewsRep.Get(Id));
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsDetailDto>()).CreateMapper();
+            return mapper.Map<News, NewsDetailDto>(Db.NewsRep.Get(Id));
         }
         /// <summary>
         /// Метод получения всех новостей
@@ -54,10 +54,10 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// <returns>
         /// Возвращает все новости
         /// </returns>
-        public IEnumerable<NewsShortDto> GetAllNews()
+        public IEnumerable<NewsDetailDto> GetAllNews()
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsShortDto>()).CreateMapper();
-            return mapper.Map<IEnumerable<News>, List<NewsShortDto>>(Db.NewsRep.GetAll());
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsDetailDto>()).CreateMapper();
+            return mapper.Map<IEnumerable<News>, List<NewsDetailDto>>(Db.NewsRep.GetAll());
         }
     }
 }

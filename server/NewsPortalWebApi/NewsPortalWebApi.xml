@@ -354,7 +354,7 @@
             Контроллер представления новостей
             </summary>
         </member>
-        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.#ctor(NewsPortalWebApi.Business_Logic.Inerfaces.INewsService{NewsPortalWebApi.Business_Logic.DTO.NewsShortDto})">
+        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.#ctor(NewsPortalWebApi.Business_Logic.Inerfaces.INewsService{NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto})">
             <summary>
             Конструктор контроллера
             </summary>

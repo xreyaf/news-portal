@@ -47,7 +47,7 @@ namespace NewsPortalWebApi
 
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 
-            services.AddScoped<INewsService<NewsShortDto>, NewsServices>();
+            services.AddScoped<INewsService<NewsDetailDto>, NewsServices>();
 
             services.AddControllers();
 
