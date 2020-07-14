@@ -91,7 +91,7 @@ export default function App() {
         <Footer />
       </BrowserRouter>
       <ScrollTop className={classes.scrollToTopButton}>
-        <Fab color="secondary" size="small" aria-label="scroll back to top">
+        <Fab size="small" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>

@@ -24,3 +24,7 @@ yarn-error.log*
 
 # Visual Studio Code
 /.vscode
+
+#Eslint and Prettier
+/.eslintrc.json
+/.prettierrc
