@@ -14,7 +14,6 @@ import { Zoom } from './components';
 import { Fab } from './components';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { grey } from '@material-ui/core/colors';
-import Toolbar from '@material-ui/core/Toolbar';
 
 const useStyles = makeStyles((theme) => ({
   newsContainer: {
