@@ -25,7 +25,7 @@ const News = ({ _id, title, description, image, date }) => {
 
   return (
     <Grid item xs={11} md={6} lg={6}>
-      <Link href={'/news/' + _id} underline="none">
+      <Link href={'/news'} underline="none">
         <Card className={classes.card}>
           <CardActionArea>
             <CardMedia className={classes.media} image={image} />
