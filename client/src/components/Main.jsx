@@ -3,7 +3,7 @@ import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from './';
 import Container from '@material-ui/core/Container';
-import { NewsCard } from './NewsCard';
+import NewsCard from './NewsCard';
 import useInfiniteScroll from './useInfinite';
 import Skeletons from './Skeletons';
 
