@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NewsPortalWebApi.Data_Access.Models;
 
 namespace NewsPortalWebApi.Business_Logic.DTO
 {
@@ -33,6 +34,14 @@ namespace NewsPortalWebApi.Business_Logic.DTO
         /// <summary>
         /// имя автора
         /// </summary>
-        public string AuthorName { get; set; }
+        public string AuthorName { get; set; } 
+        /// <summary>
+        /// Автор статьи
+        /// </summary>
+        public Author Author { get; set; }
+        /// <summary>
+        /// Идентификатор автора
+        /// </summary>
+        public Guid AuthorId { get; set; }
     }
 }

@@ -4,19 +4,39 @@
         <name>NewsPortalWebApi</name>
     </assembly>
     <members>
+        <member name="T:NewsPortalWebApi.Business_Logic.DTO.AuthorDto">
+            <summary>
+            DTO с информацией об авторе
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.AuthorDto.Id">
+            <summary>
+            id автора
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.AuthorDto.Name">
+            <summary>
+            Имя автора
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.AuthorDto.News">
+            <summary>
+            Список новостей данного автора
+            </summary>
+        </member>
         <member name="T:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto">
             <summary>
-            Класс передачи данных новости
+            DTO с полной информацией о новости
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.Id">
             <summary>
-            Свойство идентификатора новости
+            Идентификатор новости
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.Title">
             <summary>
-            Свойство названия статьи
+            Название статьи
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.Description">
@@ -24,39 +44,44 @@
             Свойство краткого описания статьи
             </summary>
         </member>
-        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.NewsImage">
-            <summary>
-            Свойство изображения новости
-            </summary>
-        </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.MainText">
             <summary>
             Свойство основного текста новости
             </summary>
         </member>
-        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.Relevancy">
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.NewsImage">
             <summary>
-            Свойство актуальности новости
+            Свойство изображения новости
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.CreationDateTime">
             <summary>
-            Свойство даты создания статьи
+            Дата создания статьи
             </summary>
         </member>
-        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.ChangingDateTime">
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.AuthorName">
             <summary>
-            Свойство даты изменения новости
+            имя автора
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.Author">
+            <summary>
+            Автор статьи
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.AuthorId">
+            <summary>
+            Идентификатор автора
             </summary>
         </member>
         <member name="T:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto">
             <summary>
-            Измененный класс передачи данных
+            DTO с укороченной информацией о новости
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.Id">
             <summary>
-            Свойство идентификатора новости
+            Идентификатор новости
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.Title">
@@ -74,24 +99,46 @@
             Свойство изображения новости
             </summary>
         </member>
-        <member name="T:NewsPortalWebApi.Business_Logic.Inerfaces.INewsService`1">
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.CreationDateTime">
+            <summary>
+            Дата создания статьи
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.AuthorName">
+            <summary>
+            имя автора
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.Author">
+            <summary>
+            Автор статьи
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.AuthorId">
+            <summary>
+            Идентификатор автора
+            </summary>
+        </member>
+        <member name="T:NewsPortalWebApi.Business_Logic.Inerfaces.INewsService`3">
             <summary>
             Интерфейс служб для работы с новостями
             </summary>
-            <typeparam name="T"></typeparam>
+            <typeparam name="TShort"></typeparam>
+            <typeparam name="TDetail"></typeparam>
+            <typeparam name="TAuthor"></typeparam>
         </member>
-        <member name="M:NewsPortalWebApi.Business_Logic.Inerfaces.INewsService`1.GetNews(System.Guid)">
+        <member name="M:NewsPortalWebApi.Business_Logic.Inerfaces.INewsService`3.GetNews(System.Guid)">
             <summary>
-            Получение новости по Id
+            Получение новости по id
             </summary>
-            <param name="Id">
-            Id новости
+            <param name="id">
+            id новости
             </param>
             <returns>
             Возвращает новость
             </returns>
         </member>
-        <member name="M:NewsPortalWebApi.Business_Logic.Inerfaces.INewsService`1.GetAllNews">
+        <member name="M:NewsPortalWebApi.Business_Logic.Inerfaces.INewsService`3.GetAllNews">
             <summary>
             Получение всех новостей
             </summary>
@@ -99,12 +146,19 @@
             Возвращение всех новостей
             </returns>
         </member>
+        <member name="M:NewsPortalWebApi.Business_Logic.Inerfaces.INewsService`3.GetAuthorName(System.Guid)">
+            <summary>
+            Получение имени автора по id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:NewsPortalWebApi.Business_Logic.Services.NewsServices">
             <summary>
             Класс служб для работы с новостями
             </summary>
         </member>
-        <member name="P:NewsPortalWebApi.Business_Logic.Services.NewsServices.Db">
+        <member name="F:NewsPortalWebApi.Business_Logic.Services.NewsServices._db">
             <summary>
             Создание служб по классу работы с репозиториями
             </summary>
@@ -115,30 +169,37 @@
             </summary>
             <param name="entity"></param>
         </member>
-        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.GetNews(System.Guid)">
+        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.NewsPortalWebApi#Business_Logic#Inerfaces#INewsService{NewsPortalWebApi#Business_Logic#DTO#NewsShortDto,NewsPortalWebApi#Business_Logic#DTO#NewsDetailDto,NewsPortalWebApi#Business_Logic#DTO#AuthorDto}#GetNews(System.Guid)">
             <summary>
             Метод получения новости по Id
             </summary>
-            <param name="Id">
+            <param name="id">
             Id новости
             </param>
             <remarks>
             Происходит проецирование модели News на NewsDetailDTO
             </remarks>
             <returns>
-            Возвращает новость по ее Id
+            Возвращает новость по ее id
             </returns>
         </member>
-        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.GetAllNews">
+        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.NewsPortalWebApi#Business_Logic#Inerfaces#INewsService{NewsPortalWebApi#Business_Logic#DTO#NewsShortDto,NewsPortalWebApi#Business_Logic#DTO#NewsDetailDto,NewsPortalWebApi#Business_Logic#DTO#AuthorDto}#GetAllNews">
             <summary>
             Метод получения всех новостей
             </summary>
             <remarks>
-            Происходит проецирование модели News на NewsDetailDTO
+            проецирование модели News на NewsShortDTO
             </remarks>
             <returns>
-            Возвращает все новости
+            Возвращает все новости в коротком формате
             </returns>
+        </member>
+        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.NewsPortalWebApi#Business_Logic#Inerfaces#INewsService{NewsPortalWebApi#Business_Logic#DTO#NewsShortDto,NewsPortalWebApi#Business_Logic#DTO#NewsDetailDto,NewsPortalWebApi#Business_Logic#DTO#AuthorDto}#GetAuthorName(System.Guid)">
+            <summary>
+            Метод для получения Автора
+            </summary>
+            <param name="id">Id Автора</param>
+            <returns>Возвращает объект Author</returns>
         </member>
         <member name="T:NewsPortalWebApi.Data_Access.EFCore.NewsPortalWebApiContext">
             <summary>
@@ -147,7 +208,12 @@
         </member>
         <member name="P:NewsPortalWebApi.Data_Access.EFCore.NewsPortalWebApiContext.News">
             <summary>
-            Создание набора данных
+            Создание набора данных о новостях
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Data_Access.EFCore.NewsPortalWebApiContext.Authors">
+            <summary>
+            Создание набора данных об авторах
             </summary>
         </member>
         <member name="M:NewsPortalWebApi.Data_Access.EFCore.NewsPortalWebApiContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{NewsPortalWebApi.Data_Access.EFCore.NewsPortalWebApiContext})">
@@ -155,6 +221,58 @@
             Получение контекста из базы данных
             </summary>
             <param name="options"></param>
+        </member>
+        <member name="T:NewsPortalWebApi.Data_Access.EFCore.Repositories.AuthorsRepository">
+            <summary>
+            Класс репозитория авторов
+            </summary>
+        </member>
+        <member name="M:NewsPortalWebApi.Data_Access.EFCore.Repositories.AuthorsRepository.#ctor(NewsPortalWebApi.Data_Access.EFCore.NewsPortalWebApiContext)">
+            <summary>
+            Констурктор репозитория
+            </summary>
+            <param name="context">
+            Аргументом является контекст из базы данных
+            </param>
+        </member>
+        <member name="M:NewsPortalWebApi.Data_Access.EFCore.Repositories.AuthorsRepository.GetAll">
+            <summary>
+            Метод для получения всех авторов
+            </summary>
+            <returns>
+            Возвращает всех авторов из базы данных
+            </returns>
+        </member>
+        <member name="M:NewsPortalWebApi.Data_Access.EFCore.Repositories.AuthorsRepository.Get(System.Guid)">
+            <summary>
+            Метод для получения автора по id
+            </summary>
+            <param name="id">
+            id нужного автора
+            </param>
+            <returns>
+            Возвращает нужного автора</returns>
+        </member>
+        <member name="M:NewsPortalWebApi.Data_Access.EFCore.Repositories.AuthorsRepository.Add(NewsPortalWebApi.Data_Access.Models.Author)">
+            <summary>
+            Добавляет автора в базу данных
+            </summary>
+            <param name="entity">
+            </param>
+        </member>
+        <member name="M:NewsPortalWebApi.Data_Access.EFCore.Repositories.AuthorsRepository.Delete(System.Guid)">
+            <summary>
+            Удаляет автора по id
+            </summary>
+            <param name="id">
+            id автора
+            </param>
+        </member>
+        <member name="M:NewsPortalWebApi.Data_Access.EFCore.Repositories.AuthorsRepository.Update(NewsPortalWebApi.Data_Access.Models.Author)">
+            <summary>
+            Изменяет автора
+            </summary>
+            <param name="entity"></param>
         </member>
         <member name="T:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork">
             <summary>
@@ -169,9 +287,14 @@
             Контекст из базы данных
             </param>
         </member>
-        <member name="P:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork.NewsRep">
+        <member name="P:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork.GetNewsRep">
             <summary>
-            Создание репозитория
+            Получение репозитория новостей
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork.GetAuthorsRep">
+            <summary>
+            Получение репозитория новостей
             </summary>
         </member>
         <member name="M:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork.Save">
@@ -200,7 +323,7 @@
             Констурктор репозитория
             </summary>
             <param name="context">
-            Аргумент является контекст из базы данных
+            Аргументом является контекст из базы данных
             </param>
         </member>
         <member name="M:NewsPortalWebApi.Data_Access.EFCore.Repositories.NewsRepository.GetAll">
@@ -230,7 +353,7 @@
         </member>
         <member name="M:NewsPortalWebApi.Data_Access.EFCore.Repositories.NewsRepository.Delete(System.Guid)">
             <summary>
-            Удаляет новость по Id
+            Удаляет новость по id
             </summary>
             <param name="id">
             Id новости
@@ -244,12 +367,12 @@
         </member>
         <member name="T:NewsPortalWebApi.Data_Access.Interfaces.IEntity">
             <summary>
-            Интерфейс для сущности
+            сущность
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Data_Access.Interfaces.IEntity.Id">
             <summary>
-            Свойство идентификатора сущности
+            идентификатор сущности
             </summary>
         </member>
         <member name="T:NewsPortalWebApi.Data_Access.Interfaces.IRepository`1">
@@ -294,14 +417,39 @@
             Интерфейс для работы с репозиториями
             </summary>
         </member>
-        <member name="P:NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork.NewsRep">
+        <member name="P:NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork.GetNewsRep">
             <summary>
-            Свойство получения репозитория
+            получение репозитория новостей
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork.GetAuthorsRep">
+            <summary>
+            получение репозитория авторов
             </summary>
         </member>
         <member name="M:NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork.Save">
             <summary>
-            Метод сохранения изменений
+            сохранение изменений
+            </summary>
+        </member>
+        <member name="T:NewsPortalWebApi.Data_Access.Models.Author">
+            <summary>
+            основные свойства авторов
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Data_Access.Models.Author.Id">
+            <summary>
+            id автора
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Data_Access.Models.Author.Name">
+            <summary>
+            Имя автора
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Data_Access.Models.Author.News">
+            <summary>
+            Список новостей данного автора
             </summary>
         </member>
         <member name="T:NewsPortalWebApi.Data_Access.Models.News">
@@ -311,42 +459,52 @@
         </member>
         <member name="P:NewsPortalWebApi.Data_Access.Models.News.Id">
             <summary>
-            Свойство идентификатора новости
+            идентификатор новости
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Data_Access.Models.News.Title">
             <summary>
-            Свойство названия статьи
+            название статьи
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Data_Access.Models.News.Description">
             <summary>
-            Свойство краткого описания статьи
+            краткое описание статьи
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Data_Access.Models.News.NewsImage">
             <summary>
-            Свойство изображения новости
+            изображение новости
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Data_Access.Models.News.MainText">
             <summary>
-            Свойство основного текста новости
+            основной текст новости
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Data_Access.Models.News.Relevancy">
             <summary>
-            Свойство актуальности новости
+            актуальность новости
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Data_Access.Models.News.CreationDateTime">
             <summary>
-            Свойство даты создания статьи
+            дата создания статьи
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Data_Access.Models.News.ChangingDateTime">
             <summary>
-            Свойство даты изменения новости
+            дата изменения новости
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Data_Access.Models.News.Author">
+            <summary>
+            автор статьи
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Data_Access.Models.News.AuthorId">
+            <summary>
+            Идентификатор автора
             </summary>
         </member>
         <member name="T:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController">
@@ -354,7 +512,7 @@
             Контроллер представления новостей
             </summary>
         </member>
-        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.#ctor(NewsPortalWebApi.Business_Logic.Inerfaces.INewsService{NewsPortalWebApi.Business_Logic.DTO.NewsShortDto})">
+        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.#ctor(NewsPortalWebApi.Business_Logic.Inerfaces.INewsService{NewsPortalWebApi.Business_Logic.DTO.NewsShortDto,NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto,NewsPortalWebApi.Business_Logic.DTO.AuthorDto})">
             <summary>
             Конструктор контроллера
             </summary>
@@ -367,13 +525,24 @@
         </member>
         <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.GetNews(System.Guid)">
             <summary>
-            Метод представления новости по Id
+            Метод представления новости по id
             </summary>
-            <param name="Id">
+            <param name="id">
             Id новости
             </param>
             <returns>
-            Возвращает новость по Id
+            Возвращает новость по id
+            </returns>
+        </member>
+        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.GetAuthorName(System.Guid)">
+            <summary>
+            представление имени автора по id
+            </summary>
+            <param name="id">
+            id автора
+            </param>
+            <returns>
+            Возвращает имя автора по id
             </returns>
         </member>
         <member name="T:NewsPortalWebApi.Program">

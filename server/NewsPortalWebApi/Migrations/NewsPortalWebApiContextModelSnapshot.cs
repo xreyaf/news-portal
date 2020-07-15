@@ -39,7 +39,7 @@ namespace NewsPortalWebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("AuthorId")
+                    b.Property<Guid>("AuthorId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("ChangingDateTime")
@@ -73,8 +73,10 @@ namespace NewsPortalWebApi.Migrations
             modelBuilder.Entity("NewsPortalWebApi.Data_Access.Models.News", b =>
                 {
                     b.HasOne("NewsPortalWebApi.Data_Access.Models.Author", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
+                        .WithMany("News")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

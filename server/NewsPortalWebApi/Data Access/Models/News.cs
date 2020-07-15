@@ -48,5 +48,9 @@ namespace NewsPortalWebApi.Data_Access.Models
         /// автор статьи
         /// </summary>
         public Author Author { get; set; }
+        /// <summary>
+        /// Идентификатор автора
+        /// </summary>
+        public Guid AuthorId { get; set; }
     }
 }

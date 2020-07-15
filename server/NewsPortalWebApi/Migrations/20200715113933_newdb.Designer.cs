@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NewsPortalWebApi.Migrations
 {
     [DbContext(typeof(NewsPortalWebApiContext))]
-    [Migration("20200714162101_initial")]
-    partial class Initial
+    [Migration("20200715113933_newdb")]
+    partial class Newdb
     {
 #pragma warning disable CS1591 // Отсутствует комментарий XML для открытого видимого типа или члена
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,7 +43,7 @@ namespace NewsPortalWebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("AuthorId")
+                    b.Property<Guid>("AuthorId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("ChangingDateTime")
@@ -77,8 +77,10 @@ namespace NewsPortalWebApi.Migrations
             modelBuilder.Entity("NewsPortalWebApi.Data_Access.Models.News", b =>
                 {
                     b.HasOne("NewsPortalWebApi.Data_Access.Models.Author", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
+                        .WithMany("News")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

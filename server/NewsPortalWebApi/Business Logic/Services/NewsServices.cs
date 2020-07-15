@@ -14,7 +14,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
     /// <summary>
     /// Класс служб для работы с новостями
     /// </summary>
-    public class NewsServices : INewsService<NewsShortDto, NewsDetailDto, AuthorDTO>
+    public class NewsServices : INewsService<NewsShortDto, NewsDetailDto, AuthorDto>
     {
         /// <summary>
         /// Создание служб по классу работы с репозиториями
@@ -41,7 +41,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// <returns>
         /// Возвращает новость по ее id
         /// </returns>
-        NewsDetailDto INewsService<NewsShortDto, NewsDetailDto, AuthorDTO>.GetNews(Guid id)
+        NewsDetailDto INewsService<NewsShortDto, NewsDetailDto, AuthorDto>.GetNews(Guid id)
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsDetailDto>()).CreateMapper();
             return mapper.Map<News, NewsDetailDto>(_db.GetNewsRep.Get(id));
@@ -55,16 +55,21 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// <returns>
         /// Возвращает все новости в коротком формате
         /// </returns>
-        IEnumerable<NewsShortDto> INewsService<NewsShortDto, NewsDetailDto, AuthorDTO>.GetAllNews()
+        IEnumerable<NewsShortDto> INewsService<NewsShortDto, NewsDetailDto, AuthorDto>.GetAllNews()
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsShortDto>()).CreateMapper();
-            return mapper.Map<IEnumerable<News>, List<NewsShortDto>>(_db.GetNewsRep.GetAll());
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsShortDto>()
+            .ForMember("AuthorName", c => c.MapFrom(a => a.Author.Name))).CreateMapper();
+            return mapper.Map<IEnumerable<News>, IEnumerable<NewsShortDto>>(_db.GetNewsRep.GetAll());
         }
-        
-        AuthorDTO INewsService<NewsShortDto, NewsDetailDto, AuthorDTO>.GetAuthorName(Guid id)
+        /// <summary>
+        /// Метод для получения Автора
+        /// </summary>
+        /// <param name="id">Id Автора</param>
+        /// <returns>Возвращает объект Author</returns>
+        AuthorDto INewsService<NewsShortDto, NewsDetailDto, AuthorDto>.GetAuthorName(Guid id)
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Author, AuthorDTO>()).CreateMapper();
-            return mapper.Map<Author, AuthorDTO>(_db.GetAuthorsRep.Get(id));
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Author, AuthorDto>()).CreateMapper();
+            return mapper.Map<Author, AuthorDto>(_db.GetAuthorsRep.Get(id));
         }
     }
 }
