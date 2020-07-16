@@ -21,6 +21,7 @@ using NewsPortalWebApi.Business_Logic.Inerfaces;
 using NewsPortalWebApi.Business_Logic.DTO;
 using NewsPortalWebApi.Business_Logic.Services;
 using NewsPortalWebApi.Data_Access.Models;
+using NewsPortalWebApi.Extensions;
 
 namespace NewsPortalWebApi
 {
@@ -46,11 +47,12 @@ namespace NewsPortalWebApi
         /// </summary>
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
-        {       
-            services.AddScoped<IRepository<News>, NewsRepository>();
-            services.AddScoped<IRepository<Author>, AuthorsRepository>();
+        {
+            services.AddEntityFrameworkNpgsql().AddDbContext<NewsPortalWebApiContext>(optionsAction: opt =>
+                opt.UseNpgsql(Configuration.GetConnectionString(name: "NewsPortalWebApiContext")));
 
-            services.AddScoped<IUnitOfWork, EFUnitOfWork>();
+            services.AddDbContext<NewsPortalWebApiContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("NewsPortalWebApiContext")));
 
             var mappingConfig = new MapperConfiguration(mc =>
             {
@@ -59,17 +61,16 @@ namespace NewsPortalWebApi
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
+            services.AddScoped<IRepository<News>, NewsRepository>();
+            services.AddScoped<IRepository<Author>, AuthorsRepository>();
+
+            services.AddScoped<IUnitOfWork, EFUnitOfWork>();
+
             services.AddScoped<INewsService<NewsShortDto, NewsDetailDto, AuthorDto>, NewsServices>();
 
             services.AddControllers();
 
             services.AddMvc();
-
-            services.AddEntityFrameworkNpgsql().AddDbContext<NewsPortalWebApiContext>(optionsAction: opt =>
-            opt.UseNpgsql(Configuration.GetConnectionString(name: "NewsPortalWebApiContext")));
-
-            services.AddDbContext<NewsPortalWebApiContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("NewsPortalWebApiContext")));
 
             services.AddSwaggerGen(c =>
             {

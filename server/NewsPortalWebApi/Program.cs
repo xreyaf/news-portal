@@ -19,7 +19,9 @@ namespace NewsPortalWebApi
         /// <summary>
         /// Инициализация хоста
         /// </summary>
-        public static void Main(string[] args)
+#pragma warning disable CS1998 // В асинхронном методе отсутствуют операторы await, будет выполнен синхронный метод
+        public static async Task Main(string[] args)
+#pragma warning restore CS1998 // В асинхронном методе отсутствуют операторы await, будет выполнен синхронный метод
         {
             var host = CreateHostBuilder(args).Build().MigrateDatabase<NewsPortalWebApiContext>();
             host.Run();

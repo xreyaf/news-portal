@@ -61,7 +61,7 @@
         </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.AuthorName">
             <summary>
-            имя автора
+            Имя автора
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto.Author">
@@ -104,14 +104,9 @@
             Дата создания статьи
             </summary>
         </member>
-        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.AuthorName">
-            <summary>
-            имя автора
-            </summary>
-        </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.Author">
             <summary>
-            Автор статьи
+            Имя автора
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.AuthorId">
@@ -160,16 +155,22 @@
         </member>
         <member name="F:NewsPortalWebApi.Business_Logic.Services.NewsServices._db">
             <summary>
-            Создание служб по классу работы с репозиториями
+            Объект UnitOfWork для получения доступа к репозиториям
             </summary>
         </member>
-        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.#ctor(NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork)">
+        <member name="F:NewsPortalWebApi.Business_Logic.Services.NewsServices._mapper">
+            <summary>
+            Объект библиотеки Mapper, содержащий в себе маппинг DTO's
+            </summary>
+        </member>
+        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.#ctor(NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork,AutoMapper.IMapper)">
             <summary>
             Создание служб по классу работы с репозиториями
             </summary>
             <param name="entity"></param>
+            <param name="mapper"></param>
         </member>
-        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.NewsPortalWebApi#Business_Logic#Inerfaces#INewsService{NewsPortalWebApi#Business_Logic#DTO#NewsShortDto,NewsPortalWebApi#Business_Logic#DTO#NewsDetailDto,NewsPortalWebApi#Business_Logic#DTO#AuthorDto}#GetNews(System.Guid)">
+        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.GetNews(System.Guid)">
             <summary>
             Метод получения новости по Id
             </summary>
@@ -183,7 +184,7 @@
             Возвращает новость по ее id
             </returns>
         </member>
-        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.NewsPortalWebApi#Business_Logic#Inerfaces#INewsService{NewsPortalWebApi#Business_Logic#DTO#NewsShortDto,NewsPortalWebApi#Business_Logic#DTO#NewsDetailDto,NewsPortalWebApi#Business_Logic#DTO#AuthorDto}#GetAllNews">
+        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.GetAllNews">
             <summary>
             Метод получения всех новостей
             </summary>
@@ -194,12 +195,22 @@
             Возвращает все новости в коротком формате
             </returns>
         </member>
-        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.NewsPortalWebApi#Business_Logic#Inerfaces#INewsService{NewsPortalWebApi#Business_Logic#DTO#NewsShortDto,NewsPortalWebApi#Business_Logic#DTO#NewsDetailDto,NewsPortalWebApi#Business_Logic#DTO#AuthorDto}#GetAuthorName(System.Guid)">
+        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.GetAuthorName(System.Guid)">
             <summary>
             Метод для получения Автора
             </summary>
             <param name="id">Id Автора</param>
             <returns>Возвращает объект Author</returns>
+        </member>
+        <member name="T:NewsPortalWebApi.Business_Logic.MappingProfile">
+            <summary>
+            Класс в котором содержится мапинг DTO
+            </summary>
+        </member>
+        <member name="M:NewsPortalWebApi.Business_Logic.MappingProfile.#ctor">
+            <summary>
+            Конструктор профиля Mapper
+            </summary>
         </member>
         <member name="T:NewsPortalWebApi.Data_Access.EFCore.NewsPortalWebApiContext">
             <summary>
@@ -279,13 +290,15 @@
             Класс для работы с репозиториями
             </summary>
         </member>
-        <member name="M:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork.#ctor(NewsPortalWebApi.Data_Access.EFCore.NewsPortalWebApiContext)">
+        <member name="M:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork.#ctor(NewsPortalWebApi.Data_Access.EFCore.NewsPortalWebApiContext,NewsPortalWebApi.Data_Access.EFCore.Repositories.NewsRepository,NewsPortalWebApi.Data_Access.EFCore.Repositories.AuthorsRepository)">
             <summary>
             Конструктор класса для работы репозитория
             </summary>
             <param name="context">
             Контекст из базы данных
             </param>
+            <param name="newsRep">Новостной репозиторий</param>
+            <param name="authorsRep">Репозиторий с авторами</param>
         </member>
         <member name="P:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork.GetNewsRep">
             <summary>
@@ -507,6 +520,17 @@
             Идентификатор автора
             </summary>
         </member>
+        <member name="T:NewsPortalWebApi.Extensions.DataSeeder">
+            <summary>
+            Класс автоматизации создания миграций
+            </summary>
+        </member>
+        <member name="M:NewsPortalWebApi.Extensions.DataSeeder.SeedData(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Запись миграции
+            </summary>
+            <param name="app"></param>
+        </member>
         <member name="T:NewsPortalWebApi.Extensions.HostExtensions">
             <summary>
             Методы расширения для IHost
@@ -561,7 +585,7 @@
         </member>
         <member name="T:NewsPortalWebApi.Program">
             <summary>
-            Основной класс прграммы
+            Класс описывающий точку входа в приложение и запускающий последующие службы
             </summary>
         </member>
         <member name="M:NewsPortalWebApi.Program.Main(System.String[])">

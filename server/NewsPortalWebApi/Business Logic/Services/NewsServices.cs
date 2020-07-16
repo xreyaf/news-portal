@@ -47,8 +47,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// </returns>
         public NewsDetailDto GetNews(Guid id)
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsDetailDto>()).CreateMapper();
-            return mapper.Map<News, NewsDetailDto>(_db.GetNewsRep.Get(id));
+            return _mapper.Map<NewsDetailDto>(_db.GetNewsRep.Get(id));
         }
         /// <summary>
         /// Метод получения всех новостей
@@ -62,10 +61,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
         public IEnumerable<NewsShortDto> GetAllNews()
         {
             var news = _db.GetNewsRep.GetAll();
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<News, NewsShortDto>()
-            .ForMember("AuthorName", c => c.MapFrom(a => a.Author.Name))).CreateMapper();
-            /*return mapper.Map<IEnumerable<News>, IEnumerable<NewsShortDto>>(_db.GetNewsRep.GetAll());*/
-            return mapper.Map<IEnumerable<News>, IEnumerable<NewsShortDto>>(news);
+            return _mapper.Map<IEnumerable<NewsShortDto>>(news);
         }
         /// <summary>
         /// Метод для получения Автора
@@ -74,8 +70,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// <returns>Возвращает объект Author</returns>
         public AuthorDto GetAuthorName(Guid id)
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Author, AuthorDto>()).CreateMapper();
-            return mapper.Map<Author, AuthorDto>(_db.GetAuthorsRep.Get(id));
+            return _mapper.Map<AuthorDto>(_db.GetAuthorsRep.Get(id));
         }
     }
 }
