@@ -70,6 +70,12 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
             if (entity != null)
                 _context.Authors.Remove(entity);
         }
+
+        public IEnumerable<News> Get(int numberOfNews)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Изменяет автора
         /// </summary>

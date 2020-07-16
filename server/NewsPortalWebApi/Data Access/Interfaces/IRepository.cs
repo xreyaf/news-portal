@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NewsPortalWebApi.Data_Access.Models;
 
 namespace NewsPortalWebApi.Data_Access.Interfaces
 {
@@ -37,5 +38,7 @@ namespace NewsPortalWebApi.Data_Access.Interfaces
         /// </summary>
         /// <param name="id"></param>
         void Delete(Guid id);
+
+        IEnumerable<News> Get(int numberOfNews);
     }
 }

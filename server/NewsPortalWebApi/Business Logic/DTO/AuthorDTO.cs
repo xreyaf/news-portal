@@ -22,6 +22,6 @@ namespace NewsPortalWebApi.Business_Logic.DTO
         /// <summary>
         /// Список новостей данного автора
         /// </summary>
-        public IEnumerable<News> News { get; set; }
+        public ICollection<News> News { get; set; }
     }
 }

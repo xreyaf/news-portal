@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using NewsPortalWebApi.Business_Logic.DTO;
 using NewsPortalWebApi.Business_Logic.Inerfaces;
@@ -61,8 +63,23 @@ namespace NewsPortalWebApi.Business_Logic.Services
         public IEnumerable<NewsShortDto> GetAllNews()
         {
             var news = _db.NewsRep.GetAll();
+
             return _mapper.Map<IEnumerable<News>, IEnumerable<NewsShortDto>>(news);
         }
+        /// <summary>
+        /// Метод получения группы новостей
+        /// </summary>
+        /// <returns>Возвращает 4 новости</returns>
+        public IEnumerable<NewsShortDto> GetGroupNews(int page)
+        {
+            var news = _db.NewsRep.GetAll()
+                .OrderBy(s => s.CreationDateTime)
+                .Skip(page * 4)
+                .Take(4);
+
+            return _mapper.Map<IEnumerable<News>, IEnumerable<NewsShortDto>>(news);
+        }
+        
         /// <summary>
         /// Метод для получения Автора
         /// </summary>

@@ -41,6 +41,11 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
         {
             return _newsService.GetAllNews();
         }
+        [HttpGet("page")]
+        public IEnumerable<NewsShortDto> GetGroup(int page)
+        {
+            return _newsService.GetGroupNews(page);
+        }
 
         /// <summary>
         /// Метод представления новости по id
@@ -51,7 +56,7 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
         /// <returns>
         /// Возвращает новость по id
         /// </returns>
-        [HttpGet("id")]
+        [HttpGet("id=")]
         public NewsDetailDto GetNews(Guid id)
         {
             return _newsService.GetNews(id);

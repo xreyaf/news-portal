@@ -26,6 +26,18 @@ namespace NewsPortalWebApi.Data_Access.Models
                     return;
                 }
 
+                context.Authors.Add(new Author
+                {
+                    Id = new Guid("b7ba7363-0c9f-4584-b661-51a09dd3ed66"),
+                    Name = "Первый автор"
+                });
+
+                context.Authors.Add(new Author
+                {
+                    Id = new Guid("c7dad1a6-fcfb-4147-95af-72d13c796ca1"),
+                    Name = "Второй автор",
+                });
+
                 context.News.Add(new News
                 {
                     Id = new Guid(),
@@ -36,13 +48,6 @@ namespace NewsPortalWebApi.Data_Access.Models
                     CreationDateTime = DateTime.Now,
                     ChangingDateTime = DateTime.Now,
                     NewsImage = null,
-                    Author = new Author
-                    {
-                        Id = Guid.Parse("b7ba7363-0c9f-4584-b661-51a09dd3ed66"),
-                        Name = "Первый автор",
-                        News = context.News.Where(news =>
-                            news.AuthorId == Guid.Parse("b7ba7363-0c9f-4584-b661-51a09dd3ed66"))
-                    },
                     AuthorId = Guid.Parse("b7ba7363-0c9f-4584-b661-51a09dd3ed66")
                 });
                 context.News.Add(new News
@@ -55,13 +60,6 @@ namespace NewsPortalWebApi.Data_Access.Models
                     CreationDateTime = DateTime.Now,
                     ChangingDateTime = DateTime.Now,
                     NewsImage = null,
-                    Author = new Author
-                    {
-                        Id = Guid.Parse("c7dad1a6-fcfb-4147-95af-72d13c796ca1"),
-                        Name = "Первый автор",
-                        News = context.News.Where(news =>
-                            news.AuthorId == Guid.Parse("c7dad1a6-fcfb-4147-95af-72d13c796ca1"))
-                    },
                     AuthorId = Guid.Parse("c7dad1a6-fcfb-4147-95af-72d13c796ca1")
                 });
                 context.News.Add(new News
@@ -74,13 +72,6 @@ namespace NewsPortalWebApi.Data_Access.Models
                     CreationDateTime = DateTime.Now,
                     ChangingDateTime = DateTime.Now,
                     NewsImage = null,
-                    Author = new Author
-                    {
-                        Id = Guid.Parse("c7dad1a6-fcfb-4147-95af-72d13c796ca1"),
-                        Name = "Второй автор",
-                        News = context.News.Where(news =>
-                            news.AuthorId == Guid.Parse("c7dad1a6-fcfb-4147-95af-72d13c796ca1"))
-                    },
                     AuthorId = Guid.Parse("c7dad1a6-fcfb-4147-95af-72d13c796ca1")
                 });
                 context.SaveChanges();

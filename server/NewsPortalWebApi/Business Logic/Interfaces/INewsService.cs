@@ -34,6 +34,11 @@ namespace NewsPortalWebApi.Business_Logic.Inerfaces
         /// </returns>
         IEnumerable<TShort> GetAllNews();
         /// <summary>
+        /// Получение группы новостей
+        /// </summary>
+        /// <returns>Возвращает группу из нескольких новостей</returns>
+        IEnumerable<TShort> GetGroupNews(int page);
+        /// <summary>
         /// Получение имени автора по id
         /// </summary>
         /// <param name="id"></param>

@@ -106,7 +106,12 @@
         </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.Author">
             <summary>
-            Имя автора
+            Нав. свойство Автор
+            </summary>
+        </member>
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.AuthorName">
+            <summary>
+            Имя автора статьи
             </summary>
         </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.AuthorId">
@@ -140,6 +145,12 @@
             <returns>
             Возвращение всех новостей
             </returns>
+        </member>
+        <member name="M:NewsPortalWebApi.Business_Logic.Inerfaces.INewsService`3.GetGroupNews(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Получение группы новостей
+            </summary>
+            <returns>Возвращает группу из нескольких новостей</returns>
         </member>
         <member name="M:NewsPortalWebApi.Business_Logic.Inerfaces.INewsService`3.GetAuthorName(System.Guid)">
             <summary>
@@ -194,6 +205,12 @@
             <returns>
             Возвращает все новости в коротком формате
             </returns>
+        </member>
+        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.GetGroupNews(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Метод получения группы новостей
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.GetAuthorName(System.Guid)">
             <summary>

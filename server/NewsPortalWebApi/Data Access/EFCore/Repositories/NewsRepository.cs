@@ -68,6 +68,13 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
             if (entity != null)
                 _context.News.Remove(entity);
         }
+
+        public IEnumerable<News> Get(int numberOfNews)
+        {
+            IEnumerable<News> news = _context.News.AsEnumerable();
+            return news;
+        }
+
         /// <summary>
         /// Изменяет новость
         /// </summary>
