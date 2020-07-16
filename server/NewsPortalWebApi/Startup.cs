@@ -45,6 +45,8 @@ namespace NewsPortalWebApi
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {       
+            services.AddScoped<IRepository<News>, NewsRepository>();
+            services.AddScoped<IRepository<Author>, AuthorsRepository>();
 
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 
