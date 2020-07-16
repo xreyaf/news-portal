@@ -24,20 +24,20 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         /// </param>
         /// <param name="newsRep">Новостной репозиторий</param>
         /// <param name="authorsRep">Репозиторий с авторами</param>
-        public EFUnitOfWork(NewsPortalWebApiContext context, NewsRepository newsRep, AuthorsRepository authorsRep)
+        public EFUnitOfWork(NewsPortalWebApiContext context, IRepository<News> newsRep, IRepository<Author> authorsRep)
         {
             _db = context;
-            GetNewsRep = newsRep;
-            GetAuthorsRep = authorsRep;
+            NewsRep = newsRep;
+            AuthorsRep = authorsRep;
         }
         /// <summary>
         /// Получение репозитория новостей
         /// </summary>
-        public IRepository<News> GetNewsRep { get; }
+        public IRepository<News> NewsRep { get; }
         /// <summary>
         /// Получение репозитория новостей
         /// </summary>
-        public IRepository<Author> GetAuthorsRep { get; }
+        public IRepository<Author> AuthorsRep { get; }
         /// <summary>
         /// Сохранение изменений
         /// </summary>

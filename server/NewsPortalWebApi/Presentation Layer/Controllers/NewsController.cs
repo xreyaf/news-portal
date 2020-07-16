@@ -11,6 +11,7 @@ using NewsPortalWebApi.Data_Access.EFCore.Repositories;
 using NewsPortalWebApi.Business_Logic.DTO;
 using NewsPortalWebApi.Business_Logic.Inerfaces;
 using NewsPortalWebApi.Business_Logic.Services;
+using NewsPortalWebApi.Data_Access.Models;
 
 namespace NewsPortalWebApi.Presentation_Layer.Controllers
 {
@@ -22,12 +23,14 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
     public class NewsController : ControllerBase
     {
         private readonly INewsService<NewsShortDto, NewsDetailDto, AuthorDto> _newsService;
+        private readonly IUnitOfWork _unitOfWork;
         /// <summary>
         /// Конструктор контроллера
         /// </summary>
-        public NewsController(INewsService<NewsShortDto, NewsDetailDto, AuthorDto> services)
+        public NewsController(INewsService<NewsShortDto, NewsDetailDto, AuthorDto> services, IUnitOfWork unitOfWork)
         {
             _newsService = services;
+            _unitOfWork = unitOfWork;
         }
         /// <summary>
         /// Метод представления всех новостей

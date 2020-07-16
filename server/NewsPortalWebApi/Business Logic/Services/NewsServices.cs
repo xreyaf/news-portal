@@ -47,7 +47,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// </returns>
         public NewsDetailDto GetNews(Guid id)
         {
-            return _mapper.Map<NewsDetailDto>(_db.GetNewsRep.Get(id));
+            return _mapper.Map<NewsDetailDto>(_db.NewsRep.Get(id));
         }
         /// <summary>
         /// Метод получения всех новостей
@@ -60,8 +60,8 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// </returns>
         public IEnumerable<NewsShortDto> GetAllNews()
         {
-            var news = _db.GetNewsRep.GetAll();
-            return _mapper.Map<IEnumerable<NewsShortDto>>(news);
+            var news = _db.NewsRep.GetAll();
+            return _mapper.Map<IEnumerable<News>, IEnumerable<NewsShortDto>>(news);
         }
         /// <summary>
         /// Метод для получения Автора
@@ -70,7 +70,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// <returns>Возвращает объект Author</returns>
         public AuthorDto GetAuthorName(Guid id)
         {
-            return _mapper.Map<AuthorDto>(_db.GetAuthorsRep.Get(id));
+            return _mapper.Map<AuthorDto>(_db.AuthorsRep.Get(id));
         }
     }
 }

@@ -109,6 +109,7 @@ namespace NewsPortalWebApi
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

@@ -14,11 +14,11 @@ namespace NewsPortalWebApi.Data_Access.Interfaces
         /// <summary>
         /// получение репозитория новостей
         /// </summary>
-        IRepository<News> GetNewsRep { get; }
+        IRepository<News> NewsRep { get; }
         /// <summary>
         /// получение репозитория авторов
         /// </summary>
-        IRepository<Author> GetAuthorsRep { get; }
+        IRepository<Author> AuthorsRep { get; }
         /// <summary>
         /// сохранение изменений
         /// </summary>

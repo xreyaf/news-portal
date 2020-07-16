@@ -22,6 +22,6 @@ namespace NewsPortalWebApi.Data_Access.Models
         /// <summary>
         /// Список новостей данного автора
         /// </summary>
-        public List<News> News { get; set; }
+        public IEnumerable<News> News { get; set; }
     }
 }

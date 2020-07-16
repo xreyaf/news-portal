@@ -290,7 +290,7 @@
             Класс для работы с репозиториями
             </summary>
         </member>
-        <member name="M:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork.#ctor(NewsPortalWebApi.Data_Access.EFCore.NewsPortalWebApiContext,NewsPortalWebApi.Data_Access.EFCore.Repositories.NewsRepository,NewsPortalWebApi.Data_Access.EFCore.Repositories.AuthorsRepository)">
+        <member name="M:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork.#ctor(NewsPortalWebApi.Data_Access.EFCore.NewsPortalWebApiContext,NewsPortalWebApi.Data_Access.Interfaces.IRepository{NewsPortalWebApi.Data_Access.Models.News},NewsPortalWebApi.Data_Access.Interfaces.IRepository{NewsPortalWebApi.Data_Access.Models.Author})">
             <summary>
             Конструктор класса для работы репозитория
             </summary>
@@ -300,12 +300,12 @@
             <param name="newsRep">Новостной репозиторий</param>
             <param name="authorsRep">Репозиторий с авторами</param>
         </member>
-        <member name="P:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork.GetNewsRep">
+        <member name="P:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork.NewsRep">
             <summary>
             Получение репозитория новостей
             </summary>
         </member>
-        <member name="P:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork.GetAuthorsRep">
+        <member name="P:NewsPortalWebApi.Data_Access.EFCore.Repositories.EFUnitOfWork.AuthorsRep">
             <summary>
             Получение репозитория новостей
             </summary>
@@ -430,12 +430,12 @@
             Интерфейс для работы с репозиториями
             </summary>
         </member>
-        <member name="P:NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork.GetNewsRep">
+        <member name="P:NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork.NewsRep">
             <summary>
             получение репозитория новостей
             </summary>
         </member>
-        <member name="P:NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork.GetAuthorsRep">
+        <member name="P:NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork.AuthorsRep">
             <summary>
             получение репозитория авторов
             </summary>
@@ -550,7 +550,7 @@
             Контроллер представления новостей
             </summary>
         </member>
-        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.#ctor(NewsPortalWebApi.Business_Logic.Inerfaces.INewsService{NewsPortalWebApi.Business_Logic.DTO.NewsShortDto,NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto,NewsPortalWebApi.Business_Logic.DTO.AuthorDto})">
+        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.#ctor(NewsPortalWebApi.Business_Logic.Inerfaces.INewsService{NewsPortalWebApi.Business_Logic.DTO.NewsShortDto,NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto,NewsPortalWebApi.Business_Logic.DTO.AuthorDto},NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork)">
             <summary>
             Конструктор контроллера
             </summary>
