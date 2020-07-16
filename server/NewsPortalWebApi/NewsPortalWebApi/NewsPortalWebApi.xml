@@ -507,6 +507,20 @@
             Идентификатор автора
             </summary>
         </member>
+        <member name="T:NewsPortalWebApi.Extensions.HostExtensions">
+            <summary>
+            Методы расширения для IHost
+            </summary>
+        </member>
+        <member name="M:NewsPortalWebApi.Extensions.HostExtensions.MigrateDatabase``1(Microsoft.Extensions.Hosting.IHost,System.Action{``0,System.IServiceProvider})">
+            <summary>
+            Миграция БД
+            </summary>
+            <typeparam name="TContext">Тип контекста БД</typeparam>
+            <param name="host"><see cref="T:Microsoft.Extensions.Hosting.IHost"/></param>
+            <param name="seed">Опция заполнения данных</param>
+            <returns><see cref="T:Microsoft.Extensions.Hosting.IHost"/></returns>
+        </member>
         <member name="T:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController">
             <summary>
             Контроллер представления новостей
