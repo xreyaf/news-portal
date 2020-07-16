@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const API_URL =
-  'http://www.json-generator.com/api/json/get/ceesmrUZnS?indent=2';
+  'http://www.json-generator.com/api/json/get/cfwTMGVysy?indent=2';
 
 export default function Main() {
   const classes = useStyles();
@@ -50,7 +50,7 @@ export default function Main() {
         ) : (
           data.map((item) => (
             <NewsCard
-              key={item.key}
+              _id={item._id}
               title={item.title}
               description={`${item.description.slice(0, 150)}...`}
               image={item.image}

@@ -28,3 +28,7 @@ server/NewsPortalWebApi/obj/
 server/.vs/
 .vs/
 
+# Visual Studio Code
+/.vscode
+
+
