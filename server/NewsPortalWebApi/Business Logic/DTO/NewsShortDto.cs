@@ -34,11 +34,7 @@ namespace NewsPortalWebApi.Business_Logic.DTO
         /// <summary>
         /// Нав. свойство Автор
         /// </summary>
-        public Author Author { get; set; }
-        /// <summary>
-        /// Имя автора статьи
-        /// </summary>
-        public string AuthorName { get; set; }
+        public AuthorDto Author { get; set; }
         /// <summary>
         /// Идентификатор автора
         /// </summary>

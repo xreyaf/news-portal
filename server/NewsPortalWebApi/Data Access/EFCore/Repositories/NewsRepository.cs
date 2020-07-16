@@ -33,7 +33,8 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         /// </returns>
         public IEnumerable<News> GetAll()
         {
-            return _context.News;
+            return _context.News
+                .Include(author => author.Author);
         }
         /// <summary>
         /// Метод для получения новости по Id
@@ -67,12 +68,6 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
             News entity = _context.News.Find(id);
             if (entity != null)
                 _context.News.Remove(entity);
-        }
-
-        public IEnumerable<News> Get(int numberOfNews)
-        {
-            IEnumerable<News> news = _context.News.AsEnumerable();
-            return news;
         }
 
         /// <summary>

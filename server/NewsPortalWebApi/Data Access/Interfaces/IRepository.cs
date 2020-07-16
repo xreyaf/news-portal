@@ -38,7 +38,5 @@ namespace NewsPortalWebApi.Data_Access.Interfaces
         /// </summary>
         /// <param name="id"></param>
         void Delete(Guid id);
-
-        IEnumerable<News> Get(int numberOfNews);
     }
 }

@@ -19,11 +19,6 @@
             Имя автора
             </summary>
         </member>
-        <member name="P:NewsPortalWebApi.Business_Logic.DTO.AuthorDto.News">
-            <summary>
-            Список новостей данного автора
-            </summary>
-        </member>
         <member name="T:NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto">
             <summary>
             DTO с полной информацией о новости
@@ -146,7 +141,7 @@
             Возвращение всех новостей
             </returns>
         </member>
-        <member name="M:NewsPortalWebApi.Business_Logic.Inerfaces.INewsService`3.GetGroupNews(System.Int32,System.Int32,System.Int32)">
+        <member name="M:NewsPortalWebApi.Business_Logic.Inerfaces.INewsService`3.GetGroupNews(System.Int32)">
             <summary>
             Получение группы новостей
             </summary>
@@ -206,11 +201,11 @@
             Возвращает все новости в коротком формате
             </returns>
         </member>
-        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.GetGroupNews(System.Int32,System.Int32,System.Int32)">
+        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.GetGroupNews(System.Int32)">
             <summary>
             Метод получения группы новостей
             </summary>
-            <returns></returns>
+            <returns>Возвращает 4 новости</returns>
         </member>
         <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.GetAuthorName(System.Guid)">
             <summary>
@@ -562,12 +557,15 @@
             <param name="seed">Опция заполнения данных</param>
             <returns><see cref="T:Microsoft.Extensions.Hosting.IHost"/></returns>
         </member>
+        <member name="T:NewsPortalWebApi.Migrations.OneMoreMigration">
+            <inheritdoc />
+        </member>
         <member name="T:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController">
             <summary>
             Контроллер представления новостей
             </summary>
         </member>
-        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.#ctor(NewsPortalWebApi.Business_Logic.Inerfaces.INewsService{NewsPortalWebApi.Business_Logic.DTO.NewsShortDto,NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto,NewsPortalWebApi.Business_Logic.DTO.AuthorDto},NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork)">
+        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.#ctor(NewsPortalWebApi.Business_Logic.Inerfaces.INewsService{NewsPortalWebApi.Business_Logic.DTO.NewsShortDto,NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto,NewsPortalWebApi.Business_Logic.DTO.AuthorDto})">
             <summary>
             Конструктор контроллера
             </summary>
@@ -577,6 +575,13 @@
             Метод представления всех новостей
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.GetGroup(System.Int32)">
+            <summary>
+            Метод для предоставления групп новостей по 4 штуки
+            </summary>
+            <param name="page"></param>
+            <returns>Четыре новости</returns>
         </member>
         <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.GetNews(System.Guid)">
             <summary>

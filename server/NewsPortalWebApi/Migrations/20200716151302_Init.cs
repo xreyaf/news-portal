@@ -3,9 +3,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NewsPortalWebApi.Migrations
 {
+#pragma warning disable CS1591 // Отсутствует комментарий XML для открытого видимого типа или члена
     public partial class Init : Migration
+#pragma warning restore CS1591 // Отсутствует комментарий XML для открытого видимого типа или члена
     {
+#pragma warning disable CS1591 // Отсутствует комментарий XML для открытого видимого типа или члена
         protected override void Up(MigrationBuilder migrationBuilder)
+#pragma warning restore CS1591 // Отсутствует комментарий XML для открытого видимого типа или члена
         {
             migrationBuilder.CreateTable(
                 name: "Authors",
@@ -50,7 +54,9 @@ namespace NewsPortalWebApi.Migrations
                 column: "AuthorId");
         }
 
+#pragma warning disable CS1591 // Отсутствует комментарий XML для открытого видимого типа или члена
         protected override void Down(MigrationBuilder migrationBuilder)
+#pragma warning restore CS1591 // Отсутствует комментарий XML для открытого видимого типа или члена
         {
             migrationBuilder.DropTable(
                 name: "News");

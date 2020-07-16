@@ -19,9 +19,5 @@ namespace NewsPortalWebApi.Business_Logic.DTO
         /// Имя автора
         /// </summary>
         public string Name { get; set; }
-        /// <summary>
-        /// Список новостей данного автора
-        /// </summary>
-        public ICollection<News> News { get; set; }
     }
 }
