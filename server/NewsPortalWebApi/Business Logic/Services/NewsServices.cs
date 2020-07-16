@@ -74,8 +74,8 @@ namespace NewsPortalWebApi.Business_Logic.Services
         {
             var news = _db.NewsRep.GetAll()
                 .OrderBy(s => s.CreationDateTime)
-                .Skip(page * 4)
-                .Take(4);
+                .Skip(page * 10)
+                .Take(10);
 
             return _mapper.Map<IEnumerable<News>, IEnumerable<NewsShortDto>>(news);
         }

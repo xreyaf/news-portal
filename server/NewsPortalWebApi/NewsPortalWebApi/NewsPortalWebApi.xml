@@ -104,11 +104,6 @@
             Нав. свойство Автор
             </summary>
         </member>
-        <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.AuthorName">
-            <summary>
-            Имя автора статьи
-            </summary>
-        </member>
         <member name="P:NewsPortalWebApi.Business_Logic.DTO.NewsShortDto.AuthorId">
             <summary>
             Идентификатор автора
