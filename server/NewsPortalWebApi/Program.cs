@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NewsPortalWebApi.Data_Access.EFCore;
+using NewsPortalWebApi.Extensions;
 
 namespace NewsPortalWebApi
 {
@@ -17,9 +19,10 @@ namespace NewsPortalWebApi
         /// <summary>
         /// Инициализация хоста
         /// </summary>
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build().MigrateDatabase<NewsPortalWebApiContext>();
+            host.Run();
         }
         /// <summary>
         /// Создание хоста

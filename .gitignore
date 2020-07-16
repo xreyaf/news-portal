@@ -26,4 +26,5 @@ yarn-error.log*
 server/NewsPortalWebApi/bin/
 server/NewsPortalWebApi/obj/
 server/.vs/
+.vs/
 
