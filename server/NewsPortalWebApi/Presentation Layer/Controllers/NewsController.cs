@@ -35,12 +35,12 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<NewsShortDto> GetAllNews()
+        public IEnumerable<NewsDetailDto> GetAllNews()
         {
             return _newsService.GetAllNews();
         }
         /// <summary>
-        /// Метод для предоставления групп новостей по 4 штуки
+        /// Метод для предоставления групп новостей по 10 штук
         /// </summary>
         /// <param name="page"></param>
         /// <returns>Четыре новости</returns>
