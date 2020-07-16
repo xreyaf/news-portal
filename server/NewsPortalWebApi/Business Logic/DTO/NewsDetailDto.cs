@@ -36,7 +36,7 @@ namespace NewsPortalWebApi.Business_Logic.DTO
         /// </summary>
         public DateTime CreationDateTime { get; set; }
         /// <summary>
-        /// имя автора
+        /// Имя автора
         /// </summary>
         public string AuthorName { get; set; }
         /// <summary>

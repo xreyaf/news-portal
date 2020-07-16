@@ -15,12 +15,15 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
     public class EFUnitOfWork : IUnitOfWork
     {
         private readonly NewsPortalWebApiContext _db;
+
         /// <summary>
         /// Конструктор класса для работы репозитория
         /// </summary>
         /// <param name="context">
         /// Контекст из базы данных
         /// </param>
+        /// <param name="newsRep">Новостной репозиторий</param>
+        /// <param name="authorsRep">Репозиторий с авторами</param>
         public EFUnitOfWork(NewsPortalWebApiContext context, NewsRepository newsRep, AuthorsRepository authorsRep)
         {
             _db = context;

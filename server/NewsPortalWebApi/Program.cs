@@ -12,14 +12,14 @@ using NewsPortalWebApi.Extensions;
 namespace NewsPortalWebApi
 {
     /// <summary>
-    /// Основной класс прграммы
+    /// Класс описывающий точку входа в приложение и запускающий последующие службы
     /// </summary>
     public class Program
     {
         /// <summary>
         /// Инициализация хоста
         /// </summary>
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build().MigrateDatabase<NewsPortalWebApiContext>();
             host.Run();

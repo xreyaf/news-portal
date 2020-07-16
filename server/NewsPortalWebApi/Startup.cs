@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using NewsPortalWebApi.Business_Logic;
 using NewsPortalWebApi.Data_Access.EFCore;
 using NewsPortalWebApi.Data_Access.EFCore.Repositories;
 using NewsPortalWebApi.Data_Access.Interfaces;
@@ -49,6 +51,13 @@ namespace NewsPortalWebApi
             services.AddScoped<IRepository<Author>, AuthorsRepository>();
 
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddScoped<INewsService<NewsShortDto, NewsDetailDto, AuthorDto>, NewsServices>();
 

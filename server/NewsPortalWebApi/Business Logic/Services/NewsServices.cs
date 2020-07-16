@@ -1,13 +1,10 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore.Storage;
+﻿using System;
+using System.Collections.Generic;
+using AutoMapper;
+using NewsPortalWebApi.Business_Logic.DTO;
+using NewsPortalWebApi.Business_Logic.Inerfaces;
 using NewsPortalWebApi.Data_Access.Interfaces;
 using NewsPortalWebApi.Data_Access.Models;
-using NewsPortalWebApi.Business_Logic.Inerfaces;
-using NewsPortalWebApi.Business_Logic.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NewsPortalWebApi.Business_Logic.Services
 {
@@ -17,16 +14,23 @@ namespace NewsPortalWebApi.Business_Logic.Services
     public class NewsServices : INewsService<NewsShortDto, NewsDetailDto, AuthorDto>
     {
         /// <summary>
-        /// Создание служб по классу работы с репозиториями
+        /// Объект UnitOfWork для получения доступа к репозиториям
         /// </summary>
         private readonly IUnitOfWork _db;
+        /// <summary>
+        /// Объект библиотеки Mapper, содержащий в себе маппинг DTO's
+        /// </summary>
+        private readonly IMapper _mapper;
+
         /// <summary>
         /// Создание служб по классу работы с репозиториями
         /// </summary>
         /// <param name="entity"></param>
-        public NewsServices(IUnitOfWork entity)
+        /// <param name="mapper"></param>
+        public NewsServices(IUnitOfWork entity, IMapper mapper)
         {
             _db = entity;
+            _mapper = mapper;
         }
 
         /// <summary>
