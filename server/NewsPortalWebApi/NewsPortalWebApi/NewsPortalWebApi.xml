@@ -520,16 +520,16 @@
             Идентификатор автора
             </summary>
         </member>
-        <member name="T:NewsPortalWebApi.Extensions.DataSeeder">
+        <member name="T:NewsPortalWebApi.Data_Access.Models.SampleData">
             <summary>
-            Класс автоматизации создания миграций
+            Заполнятор бд 
             </summary>
         </member>
-        <member name="M:NewsPortalWebApi.Extensions.DataSeeder.SeedData(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+        <member name="M:NewsPortalWebApi.Data_Access.Models.SampleData.Initialize(System.IServiceProvider)">
             <summary>
-            Запись миграции
+            Метод для запуска процедуры заполнения бд
             </summary>
-            <param name="app"></param>
+            <param name="serviceProvider"></param>
         </member>
         <member name="T:NewsPortalWebApi.Extensions.HostExtensions">
             <summary>
