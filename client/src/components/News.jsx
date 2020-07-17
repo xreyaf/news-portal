@@ -63,7 +63,7 @@ export default function News() {
               component="img"
               className={classes.media}
               image={data.newsImage}
-              alt="News Image"
+              alt={data.title}
             />
             <Typography
               gutterBottom

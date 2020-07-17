@@ -32,7 +32,7 @@ const News = ({ _id, title, description, image, date }) => {
               height="270"
               className={classes.media}
               image={image}
-              alt="News Image"
+              alt={title}
             />
             <CardContent>
               <Typography
