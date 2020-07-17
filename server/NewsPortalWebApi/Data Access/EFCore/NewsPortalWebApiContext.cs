@@ -8,10 +8,23 @@ using NewsPortalWebApi.Data_Access.Models;
 
 namespace NewsPortalWebApi.Data_Access.EFCore
 {
+    /// <summary>
+    /// Класс получения контекста из базы данных
+    /// </summary>
     public class NewsPortalWebApiContext : DbContext
     {
+        /// <summary>
+        /// Создание набора данных о новостях
+        /// </summary>
         public DbSet<News> News { get; set; }
-
+        /// <summary>
+        /// Создание набора данных об авторах
+        /// </summary>
+        public DbSet<Author> Authors { get; set; }
+        /// <summary>
+        /// Получение контекста из базы данных
+        /// </summary>
+        /// <param name="options"></param>
         public NewsPortalWebApiContext (DbContextOptions<NewsPortalWebApiContext> options)
             : base(options)
         {

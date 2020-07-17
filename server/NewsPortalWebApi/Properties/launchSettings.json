@@ -20,7 +20,7 @@
     "NewsPortalWebApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "News",
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
