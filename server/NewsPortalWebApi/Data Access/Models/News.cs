@@ -7,17 +7,50 @@ using NewsPortalWebApi.Data_Access.Interfaces;
 
 namespace NewsPortalWebApi.Data_Access.Models
 {
+    /// <summary>
+    /// Этот класс содержит основные свойства новостей
+    /// </summary>
     public class News : IEntity
     {
+        /// <summary>
+        /// идентификатор новости
+        /// </summary>
         public Guid Id { get; set; }
+        /// <summary>
+        /// название статьи
+        /// </summary>
         public string Title { get; set; }
+        /// <summary>
+        /// краткое описание статьи
+        /// </summary>
         public string Description { get; set; }
-        /*В столбце NewsImage содержатся пути к картинкам
-        в файловой системе.*/
-        public string NewsImage { get; set; }
+        /// <summary>
+        /// изображение новости
+        /// </summary>
+        public byte[] NewsImage { get; set; }
+        /// <summary>
+        /// основной текст новости
+        /// </summary>
         public string MainText { get; set; }
+        /// <summary>
+        /// актуальность новости
+        /// </summary>
         public bool Relevancy { get; set; }
-        public DateTime CreationDataTime { get; set; }
-        public DateTime ChengingDataTime { get; set; }
+        /// <summary>
+        /// дата создания статьи
+        /// </summary>
+        public DateTime CreationDateTime { get; set; }
+        /// <summary>
+        /// дата изменения новости
+        /// </summary>
+        public DateTime ChangingDateTime { get; set; }
+        /// <summary>
+        /// автор статьи
+        /// </summary>
+        public Author Author { get; set; }
+        /// <summary>
+        /// Идентификатор автора
+        /// </summary>
+        public Guid AuthorId { get; set; }
     }
 }

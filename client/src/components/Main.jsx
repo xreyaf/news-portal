@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const API_URL =
-  'http://www.json-generator.com/api/json/get/cfwTMGVysy?indent=2';
+  'https://fierce-sands-81057.herokuapp.com/api/News/page?page=';
+let count= 1;
 
 export default function Main() {
   const classes = useStyles();
@@ -24,18 +25,23 @@ export default function Main() {
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreData);
 
   const loadData = () => {
-    axios.get(API_URL).then((res) => {
+    axios.get(API_URL+'0').then((res) => {
       setData(res.data.slice(0, length));
     });
   };
+
+
+
   function fetchMoreData() {
-    axios.get(API_URL).then((res) => {
-      setData([...data, ...res.data.slice(length, length + 4)]);
-      if (length <= data.length) {
-        setLength(length + 4);
-        setIsFetching(false);
-      }
-    });
+    axios.get(API_URL+`${count}`).then((res) => {
+      setData([...data, ...res.data]);
+      setLength(10);
+      count = count + 1;
+      console.log(count);
+      console.log(API_URL+`${count}`);
+      setIsFetching(false);
+      
+    }).catch((err) => console.log(`Couldn't fetch data. Error: ${err})`));
   }
 
   useEffect(() => {
@@ -50,11 +56,11 @@ export default function Main() {
         ) : (
           data.map((item) => (
             <NewsCard
-              _id={item._id}
+              _id={item.id}
               title={item.title}
-              description={`${item.description.slice(0, 150)}...`}
-              image={item.image}
-              date={item.date}
+              description={item.description}
+              image={item.newsImage}
+              date={item.creationDateTime}
             />
           ))
         )}

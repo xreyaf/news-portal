@@ -29,7 +29,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Main() {
+const API_URL =
+  'https://fierce-sands-81057.herokuapp.com/api/News/id?id='
+
+export default function News() {
+  const [data, setData] = useState([]);
+  const loadData = function() {
+    const search = window.location.search;
+    const params = new URLSearchParams(search);
+    const id = params.get('id');
+    axios.get(API_URL + id).then((res) => {
+      setData(res.data)
+      console.log(id);
+    });
+  };
+  useEffect(() => {
+    loadData();
+  }, []);
+  
   const classes = useStyles();
 
   return (
@@ -43,10 +60,9 @@ export default function Main() {
             align="center"
             className={classes.title}
           >
-            Vladimir Putin ejus posuit calamo in mensa, et in Russian media
-            fecit pelagus fama dies. Ut ' quam nos invenit quod Praeses iratus!
+            {data.title}
           </Typography>
-          <CardMedia className={classes.media} image={pic} />
+          <CardMedia className={classes.media} image={data.newsImage} />
           <Typography
             gutterBottom
             variant="body1"
@@ -54,17 +70,7 @@ export default function Main() {
             component="p"
             className={classes.mainText}
           >
-            Res: Vladimir Putin ponit calamum in mensa per conventus in pugna
-            flumina et ignes. Videtur quod hoc est finem fabula. Interim,
-            Russian media scribere nuntium, quod Putin iratus est et sollicitus,
-            Ruteni, ut videos, socialis retiacula,, concurrere in Analytics, et
-            partim politica blandit. Evenit, quod Praeses non iustus posuit
-            calamo. Et proiecit eam, projecit eam, proiecit eam et fere ledo
-            officiales. Ut a praecessi, Putin et eius calamum fere fit,
-            consectetur loco de die in Yandex.News". Scilicet, est omnino
-            impossibile, ut legere hoc cum gravi faciem (et magis etiam, ut de
-            ea). Ita at aliquam lacus in Russian media — sunt, ut semper
-            pulchra. Et in omnibus negotium!
+            {data.mainText}
           </Typography>
           <Typography
             variant="body2"
@@ -72,7 +78,7 @@ export default function Main() {
             component="p"
             className={classes.date}
           >
-            12/12/12 | Author Name
+            {data.creationDateTime}| {data.authorName}
           </Typography>
         </CardContent>
       </Card>

@@ -9,32 +9,48 @@ using NewsPortalWebApi.Data_Access.Models;
 
 namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
 {
+    /// <summary>
+    /// Класс для работы с репозиториями
+    /// </summary>
     public class EFUnitOfWork : IUnitOfWork
     {
         private readonly NewsPortalWebApiContext _db;
-        private readonly IRepository<News> _newsRepository;
 
-        public EFUnitOfWork(NewsPortalWebApiContext context)
+        /// <summary>
+        /// Конструктор класса для работы репозитория
+        /// </summary>
+        /// <param name="context">
+        /// Контекст из базы данных
+        /// </param>
+        /// <param name="newsRep">Новостной репозиторий</param>
+        /// <param name="authorsRep">Репозиторий с авторами</param>
+        public EFUnitOfWork(NewsPortalWebApiContext context, IRepository<News> newsRep, IRepository<Author> authorsRep)
         {
             _db = context;
+            NewsRep = newsRep;
+            AuthorsRep = authorsRep;
         }
-
-        public IRepository<News> NewsRep
-        { get
-            {
-                if (_newsRepository == null)
-                    _newsRepository = new NewsRepository(_db);
-                return _newsRepository;
-            }
-        }
-
+        /// <summary>
+        /// Получение репозитория новостей
+        /// </summary>
+        public IRepository<News> NewsRep { get; }
+        /// <summary>
+        /// Получение репозитория новостей
+        /// </summary>
+        public IRepository<Author> AuthorsRep { get; }
+        /// <summary>
+        /// Сохранение изменений
+        /// </summary>
         public void Save()
         {
             _db.SaveChanges();
         }
 
         private bool disposed = false;
-
+        /// <summary>
+        /// Освобождение выделенных ресурсов для этого контекста
+        /// </summary>
+        /// <param name="disposing"></param>
         public virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
@@ -46,6 +62,9 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
                 this.disposed = true;
             }
         }
+        /// <summary>
+        /// Пропуск финализации
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
