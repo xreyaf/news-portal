@@ -13,7 +13,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
     /// <summary>
     /// Класс служб для работы с новостями
     /// </summary>
-    public class NewsServices : INewsService<NewsShortDto, NewsDetailDto, AuthorDto>
+    public class NewsServices : INewsService<NewsShortDto, NewsDetailDto, AuthorDTO>
     {
         /// <summary>
         /// Объект UnitOfWork для получения доступа к репозиториям
@@ -23,6 +23,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// Объект библиотеки Mapper, содержащий в себе маппинг DTO's
         /// </summary>
         private readonly IMapper _mapper;
+
 
         /// <summary>
         /// Создание служб по классу работы с репозиториями
@@ -85,9 +86,9 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// </summary>
         /// <param name="id">Id Автора</param>
         /// <returns>Возвращает объект Author</returns>
-        public AuthorDto GetAuthorName(Guid id)
+        public AuthorDTO GetAuthorName(Guid id)
         {
-            return _mapper.Map<AuthorDto>(_db.AuthorsRep.Get(id));
+            return _mapper.Map<AuthorDTO>(_db.AuthorsRep.Get(id));
         }
     }
 }

@@ -573,7 +573,7 @@
         </member>
         <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.GetGroup(System.Int32)">
             <summary>
-            Метод для предоставления групп новостей по 4 штуки
+            Метод для предоставления групп новостей по 10 штук
             </summary>
             <param name="page"></param>
             <returns>Четыре новости</returns>

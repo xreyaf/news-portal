@@ -22,7 +22,7 @@ namespace NewsPortalWebApi.Business_Logic
             //    .ForMember("AuthorName",
             //        opt => opt.MapFrom(c => c.Author.Name));
             CreateMap<News, NewsDetailDto>();
-            CreateMap<Author, AuthorDto>();
+            CreateMap<Author, AuthorDTO>();
         }
     }
 }

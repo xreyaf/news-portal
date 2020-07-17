@@ -9,7 +9,7 @@ namespace NewsPortalWebApi.Business_Logic.DTO
     /// <summary>
     /// DTO с информацией об авторе
     /// </summary>
-    public class AuthorDto
+    public class AuthorDTO
     {
         /// <summary>
         /// id автора

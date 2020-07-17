@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NewsPortalWebApi.Business_Logic.DTO;
 
 namespace NewsPortalWebApi.Business_Logic.Inerfaces
 {
@@ -14,7 +15,6 @@ namespace NewsPortalWebApi.Business_Logic.Inerfaces
     public interface INewsService<TShort, TDetail, TAuthor> 
         where TShort : class
         where TDetail : class
-        where TAuthor : class
     {
         /// <summary>
         /// Получение новости по id
