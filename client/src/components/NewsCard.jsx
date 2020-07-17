@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   media: {
-    height: 270,
     backgroundRepeat: 'no-repeat',
   },
   title: {
@@ -24,13 +23,16 @@ const News = ({ _id, title, description, image, date }) => {
   const classes = useStyles();
 
   return (
-    <Grid item xs={11} md={6} lg={6}>
+    <Grid item xs={11} md={5} lg={5} xl={5}>
       <Link href={'/news/id?id=' + `${_id}`} underline="none">
         <Card className={classes.card}>
           <CardActionArea>
             <CardMedia
+              component="img"
+              height="270"
               className={classes.media}
-              image="https://medialeaks.ru/wp-content/uploads/2017/09/breaking-news-6-600x338.jpg"
+              image={`data:image/png;base64,${image}`}
+              alt={title}
             />
             <CardContent>
               <Typography

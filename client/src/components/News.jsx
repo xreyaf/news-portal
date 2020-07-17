@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import Skeletons from './Skeletons';
-import { Grid, Card, CardActionArea, CardContent, CardMedia } from './';
-import pic from './pic.jpg';
+import { Card, CardContent, CardMedia, NewsSkeleton, Container } from './';
 
 const useStyles = makeStyles((theme) => ({
-  newsContainer: {
-    padding: theme.spacing(0, 4, 4, 4),
+  root: {
     minHeight: '80vh',
   },
   media: {
     height: '40vh',
     backgroundRepeat: 'no-repeat',
-    margin: theme.spacing(2, 2),
     borderRadius: '5px',
+  },
+  card: {
+    padding: theme.spacing(0, 2, 0, 2),
   },
   title: {
     padding: theme.spacing(2, 2),
@@ -39,7 +37,6 @@ export default function News() {
     const id = params.get('id');
     axios.get(API_URL + id).then((res) => {
       setData(res.data);
-      console.log(id);
     });
   };
   useEffect(() => {
@@ -49,41 +46,47 @@ export default function News() {
   const classes = useStyles();
 
   return (
-    <Container className={classes.newsContainer} maxWidth="lg">
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography
-            gutterBottom
-            variant="h4"
-            component="h1"
-            align="center"
-            className={classes.title}
-          >
-            {data.title}
-          </Typography>
-          <CardMedia
-            className={classes.media}
-            image="https://medialeaks.ru/wp-content/uploads/2017/09/breaking-news-6-600x338.jpg"
-          />
-          <Typography
-            gutterBottom
-            variant="body1"
-            color="inherit"
-            component="p"
-            className={classes.mainText}
-          >
-            {data.mainText}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            component="p"
-            className={classes.date}
-          >
-            {data.creationDateTime}| {data.authorName}
-          </Typography>
-        </CardContent>
-      </Card>
+    <Container className={classes.root} maxWidth="lg">
+      {data.length === 0 ? (
+        <NewsSkeleton />
+      ) : (
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h4"
+              component="h1"
+              align="center"
+              className={classes.title}
+            >
+              {data.title}
+            </Typography>
+            <CardMedia
+              component="img"
+              className={classes.media}
+              image={`data:image/png;base64,${data.newsImage}`}
+              alt={data.title}
+            />
+            <Typography
+              gutterBottom
+              variant="body1"
+              color="inherit"
+              component="p"
+              className={classes.mainText}
+            >
+              {data.mainText}
+            </Typography>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              className={classes.date}
+            >
+              {data.creationDateTime} | {data.authorName}
+            </Typography>
+          </CardContent>
+        </Card>
+      )}
     </Container>
   );
 }

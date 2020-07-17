@@ -5,6 +5,7 @@ import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import { amber, grey } from '@material-ui/core/colors';
+import { SignUp } from './';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -30,14 +31,6 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '2rem',
     },
   },
-  toolbarSecondary: {
-    justifyContent: 'space-between',
-    overflowX: 'auto',
-  },
-  toolbarLink: {
-    padding: theme.spacing(1),
-    flexShrink: 0,
-  },
   HomeBtn: {
     color: grey[300],
     fontSize: '18px',
@@ -59,6 +52,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const emails = ['username@gmail.com', 'user02@gmail.com'];
+  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
 
   return (
     <>
@@ -78,9 +83,19 @@ export default function Header() {
         >
           News Portal
         </Typography>
-        <Button className={classes.SignInBtn} variant="outlined" size="small">
+        <Button
+          className={classes.SignInBtn}
+          variant="outlined"
+          size="small"
+          onClick={handleClickOpen}
+        >
           Sign in
         </Button>
+        <SignUp
+          selectedValue={selectedValue}
+          open={open}
+          onClose={handleClose}
+        />
       </Toolbar>{' '}
     </>
   );
