@@ -19,6 +19,7 @@ using NewsPortalWebApi.Data_Access.EFCore.Repositories;
 using NewsPortalWebApi.Data_Access.Interfaces;
 using NewsPortalWebApi.Business_Logic.Inerfaces;
 using NewsPortalWebApi.Business_Logic.DTO;
+using NewsPortalWebApi.Business_Logic.Interfaces;
 using NewsPortalWebApi.Business_Logic.Services;
 using NewsPortalWebApi.Data_Access.Models;
 using NewsPortalWebApi.Extensions;
@@ -67,6 +68,7 @@ namespace NewsPortalWebApi
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 
             services.AddScoped<INewsService, NewsServices>();
+            services.AddScoped<IAuthorsService, AuthorsServices>();
 
             services.AddControllers();
 

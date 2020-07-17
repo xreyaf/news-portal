@@ -189,6 +189,23 @@
             Идентификатор автора
             </summary>
         </member>
+        <member name="T:NewsPortalWebApi.Business_Logic.Interfaces.IAuthorsService">
+            <summary>
+            Интерфейс сервиса работы с авторами
+            </summary>
+        </member>
+        <member name="M:NewsPortalWebApi.Business_Logic.Interfaces.IAuthorsService.GetAuthor(System.Guid)">
+            <summary>
+            Получение автора по id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewsPortalWebApi.Business_Logic.Interfaces.IAuthorsService.GetAuthors">
+            <summary>
+            Получение списка всех авторов
+            </summary>
+        </member>
         <member name="T:NewsPortalWebApi.Business_Logic.Inerfaces.INewsService">
             <summary>
             Интерфейс служб для работы с новостями
@@ -237,12 +254,40 @@
             </summary>
             <param name="id"></param>
         </member>
-        <member name="M:NewsPortalWebApi.Business_Logic.Inerfaces.INewsService.GetAuthorName(System.Guid)">
+        <member name="T:NewsPortalWebApi.Business_Logic.Services.AuthorsServices">
             <summary>
-            Получение имени автора по id
+            Сервис для работы с авторами
             </summary>
-            <param name="id"></param>
-            <returns></returns>
+        </member>
+        <member name="F:NewsPortalWebApi.Business_Logic.Services.AuthorsServices._db">
+            <summary>
+            Объект UnitOfWork для получения доступа к репозиториям
+            </summary>
+        </member>
+        <member name="F:NewsPortalWebApi.Business_Logic.Services.AuthorsServices._mapper">
+            <summary>
+            Объект библиотеки Mapper, содержащий в себе маппинг DTO's
+            </summary>
+        </member>
+        <member name="M:NewsPortalWebApi.Business_Logic.Services.AuthorsServices.#ctor(NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork,AutoMapper.IMapper)">
+            <summary>
+            Создание службы работы с репозиториями
+            </summary>
+            <param name="entity"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:NewsPortalWebApi.Business_Logic.Services.AuthorsServices.GetAuthors">
+            <summary>
+            Получить всех авторов
+            </summary>
+            <returns>Список авторов</returns>
+        </member>
+        <member name="M:NewsPortalWebApi.Business_Logic.Services.AuthorsServices.GetAuthor(System.Guid)">
+            <summary>
+            Метод для получения Автора
+            </summary>
+            <param name="id">Id Автора</param>
+            <returns>Возвращает объект Author</returns>
         </member>
         <member name="T:NewsPortalWebApi.Business_Logic.Services.NewsServices">
             <summary>
@@ -261,7 +306,7 @@
         </member>
         <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.#ctor(NewsPortalWebApi.Data_Access.Interfaces.IUnitOfWork,AutoMapper.IMapper)">
             <summary>
-            Создание служб по классу работы с репозиториями
+            Создание службы по классу работы с репозиториями
             </summary>
             <param name="entity"></param>
             <param name="mapper"></param>
@@ -297,13 +342,6 @@
             </summary>
             <returns>Возвращает 4 новости</returns>
         </member>
-        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.GetAuthorName(System.Guid)">
-            <summary>
-            Метод для получения Автора
-            </summary>
-            <param name="id">Id Автора</param>
-            <returns>Возвращает объект Author</returns>
-        </member>
         <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.Add(NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto)">
             <summary>
             Добавляет запись в бд
@@ -315,6 +353,12 @@
             Изменяет уже имеющуюся новость
             </summary>
             <param name="news"></param>
+        </member>
+        <member name="M:NewsPortalWebApi.Business_Logic.Services.NewsServices.Delete(System.Guid)">
+            <summary>
+            Удаление новости по идентификатору
+            </summary>
+            <param name="id"></param>
         </member>
         <member name="T:NewsPortalWebApi.Business_Logic.MappingProfile">
             <summary>
@@ -662,6 +706,34 @@
         <member name="T:NewsPortalWebApi.Migrations.OneMoreMigration">
             <inheritdoc />
         </member>
+        <member name="T:NewsPortalWebApi.Presentation_Layer.Controllers.AuthorsController">
+            <summary>
+            Контроллер взаимодействия с авторами
+            </summary>
+        </member>
+        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.AuthorsController.#ctor(NewsPortalWebApi.Business_Logic.Interfaces.IAuthorsService)">
+            <summary>
+            Контроллер для отображения методов работы с авторами
+            </summary>
+            <param name="service"></param>
+        </member>
+        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.AuthorsController.GetAuthorName(System.Guid)">
+            <summary>
+            представление имени автора по id
+            </summary>
+            <param name="id">
+            id автора
+            </param>
+            <returns>
+            Возвращает имя автора по id
+            </returns>
+        </member>
+        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.AuthorsController.GetAllAuthors">
+            <summary>
+            Возвращает список всех авторов
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController">
             <summary>
             Контроллер представления новостей
@@ -685,6 +757,12 @@
             <param name="page"></param>
             <returns>Четыре новости</returns>
         </member>
+        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.DeleteNews(System.Guid)">
+            <summary>
+            Удаление новости
+            </summary>
+            <param name="id"></param>
+        </member>
         <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.AddNews(NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto)">
             <summary>
             Отправляет в бд новостную запись
@@ -706,17 +784,6 @@
             </param>
             <returns>
             Возвращает новость по id
-            </returns>
-        </member>
-        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.GetAuthorName(System.Guid)">
-            <summary>
-            представление имени автора по id
-            </summary>
-            <param name="id">
-            id автора
-            </param>
-            <returns>
-            Возвращает имя автора по id
             </returns>
         </member>
         <member name="T:NewsPortalWebApi.Program">

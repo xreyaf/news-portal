@@ -48,11 +48,6 @@ namespace NewsPortalWebApi.Business_Logic.Inerfaces
         /// </summary>
         /// <param name="id"></param>
         void Delete(Guid id);
-        /// <summary>
-        /// Получение имени автора по id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        AuthorDTO GetAuthorName(Guid id);
+        
     }
 }

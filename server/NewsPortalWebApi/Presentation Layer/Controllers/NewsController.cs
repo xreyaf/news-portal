@@ -91,19 +91,5 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
         {
             return _newsService.GetNews(id);
         }
-        /// <summary>
-        /// представление имени автора по id
-        /// </summary>
-        /// <param name="id">
-        /// id автора
-        /// </param>
-        /// <returns>
-        /// Возвращает имя автора по id
-        /// </returns>
-        [HttpGet("authorId")]
-        public string GetAuthorName(Guid id)
-        {
-            return _newsService.GetAuthorName(id).Name;
-        }
     }
 }
