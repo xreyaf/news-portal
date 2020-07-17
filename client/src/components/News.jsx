@@ -5,14 +5,13 @@ import Typography from '@material-ui/core/Typography';
 import { Card, CardContent, CardMedia, NewsSkeleton, Container } from './';
 
 const useStyles = makeStyles((theme) => ({
-  newsContainer: {
-    padding: theme.spacing(0, 4, 4, 4),
+  root: {
+    padding: theme.spacing(2, 0, 4, 0),
     minHeight: '80vh',
   },
   media: {
     height: '40vh',
     backgroundRepeat: 'no-repeat',
-    margin: theme.spacing(2, 2),
     borderRadius: '5px',
   },
   title: {
@@ -36,7 +35,6 @@ export default function News() {
     const id = params.get('id');
     axios.get(API_URL + id).then((res) => {
       setData(res.data);
-      console.log(id);
     });
   };
   useEffect(() => {
@@ -46,7 +44,7 @@ export default function News() {
   const classes = useStyles();
 
   return (
-    <Container className={classes.newsContainer} maxWidth="lg">
+    <Container className={classes.root} maxWidth="xl">
       {data.length === 0 ? (
         <NewsSkeleton />
       ) : (
@@ -61,7 +59,12 @@ export default function News() {
             >
               {data.title}
             </Typography>
-            <CardMedia className={classes.media} image={data.newsImage} />
+            <CardMedia
+              component="img"
+              className={classes.media}
+              image={data.newsImage}
+              alt="News Image"
+            />
             <Typography
               gutterBottom
               variant="body1"

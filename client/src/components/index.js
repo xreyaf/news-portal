@@ -5,6 +5,7 @@ export { default as News } from './News.jsx';
 export { default as Copyrights } from './Copyrights.jsx';
 export { default as NewsSkeleton } from './NewsSkeleton.jsx';
 export { default as Skeleton } from '@material-ui/lab/Skeleton';
+export { default as SignUp } from './SignUp.jsx';
 export { default as Grid } from '@material-ui/core/Grid';
 export { default as Card } from '@material-ui/core/Card';
 export { default as CardActionArea } from '@material-ui/core/CardActionArea';

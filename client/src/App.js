@@ -8,7 +8,6 @@ import {
 } from '@material-ui/core/styles';
 import { CssBaseline } from './components';
 import { Header, Main, Footer, News } from './components';
-import { NewsCard } from './components';
 import { useScrollTrigger } from './components';
 import { Zoom } from './components';
 import { Fab } from './components';
