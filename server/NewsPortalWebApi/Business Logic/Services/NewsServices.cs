@@ -27,7 +27,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
 
 
         /// <summary>
-        /// Создание служб по классу работы с репозиториями
+        /// Создание службы по классу работы с репозиториями
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="mapper"></param>
@@ -66,7 +66,8 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// </returns>
         public IEnumerable<NewsShortDto> GetAllNews()
         {
-            var news = _db.NewsRep.GetAll();
+            var news = _db.NewsRep.GetAll()
+                .OrderByDescending(news => news.CreationDateTime);
 
             return _mapper.Map<IEnumerable<News>, IEnumerable<NewsShortDto>>(news);
         }
@@ -78,21 +79,11 @@ namespace NewsPortalWebApi.Business_Logic.Services
         public IEnumerable<NewsShortDto> GetGroupNews(int page)
         {
             var news = _db.NewsRep.GetAll()
-                .OrderBy(s => s.CreationDateTime)
+                .OrderByDescending(s => s.CreationDateTime)
                 .Skip(page * 10)
                 .Take(10);
 
             return _mapper.Map<IEnumerable<News>, IEnumerable<NewsShortDto>>(news);
-        }
-        
-        /// <summary>
-        /// Метод для получения Автора
-        /// </summary>
-        /// <param name="id">Id Автора</param>
-        /// <returns>Возвращает объект Author</returns>
-        public AuthorDTO GetAuthorName(Guid id)
-        {
-            return _mapper.Map<AuthorDTO>(_db.AuthorsRep.Get(id));
         }
 
         /// <summary>
@@ -118,7 +109,10 @@ namespace NewsPortalWebApi.Business_Logic.Services
             _db.NewsRep.Update(_news);
             _db.Save();
         }
-
+        /// <summary>
+        /// Удаление новости по идентификатору
+        /// </summary>
+        /// <param name="id"></param>
         public void Delete(Guid id)
         {
             _db.NewsRep.Delete(id);
