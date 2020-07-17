@@ -29,24 +29,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const API_URL =
-  'https://fierce-sands-81057.herokuapp.com/api/News/id?id='
+const API_URL = 'https://fierce-sands-81057.herokuapp.com/api/News/id?id=';
 
 export default function News() {
   const [data, setData] = useState([]);
-  const loadData = function() {
+  const loadData = function () {
     const search = window.location.search;
     const params = new URLSearchParams(search);
     const id = params.get('id');
     axios.get(API_URL + id).then((res) => {
-      setData(res.data)
+      setData(res.data);
       console.log(id);
     });
   };
   useEffect(() => {
     loadData();
   }, []);
-  
+
   const classes = useStyles();
 
   return (
@@ -62,7 +61,10 @@ export default function News() {
           >
             {data.title}
           </Typography>
-          <CardMedia className={classes.media} image={data.newsImage} />
+          <CardMedia
+            className={classes.media}
+            image="https://medialeaks.ru/wp-content/uploads/2017/09/breaking-news-6-600x338.jpg"
+          />
           <Typography
             gutterBottom
             variant="body1"
