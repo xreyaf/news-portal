@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
@@ -52,9 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const emails = ['username@gmail.com', 'user02@gmail.com'];
-  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -62,7 +60,6 @@ export default function Header() {
 
   const handleClose = (value) => {
     setOpen(false);
-    setSelectedValue(value);
   };
 
   return (
@@ -91,11 +88,7 @@ export default function Header() {
         >
           Sign in
         </Button>
-        <SignUp
-          selectedValue={selectedValue}
-          open={open}
-          onClose={handleClose}
-        />
+        <SignUp open={open} onClose={handleClose} />
       </Toolbar>{' '}
     </>
   );
