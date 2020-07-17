@@ -22,11 +22,11 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
     [Route("api/[controller]")]
     public class NewsController : ControllerBase
     {
-        private readonly INewsService<NewsShortDto, NewsDetailDto, AuthorDTO> _newsService;
+        private readonly INewsService _newsService;
         /// <summary>
         /// Конструктор контроллера
         /// </summary>
-        public NewsController(INewsService<NewsShortDto, NewsDetailDto, AuthorDTO> services)
+        public NewsController(INewsService services)
         {
             _newsService = services;
         }
@@ -49,7 +49,34 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
         {
             return _newsService.GetGroupNews(page);
         }
+        /// <summary>
+        /// Удаление новости
+        /// </summary>
+        /// <param name="id"></param>
+        [HttpDelete("news")]
+        public void DeleteNews(Guid id)
+        {
+            _newsService.Delete(id);
+        }
 
+        /// <summary>
+        /// Отправляет в бд новостную запись
+        /// </summary>
+        /// <param name="news">Новость в формате json</param>
+        [HttpPost("addNews")]
+        public void AddNews(NewsDetailDto news)
+        {
+            _newsService.Add(news);
+        }
+        /// <summary>
+        /// Перезаписывает уже существующую запись в бд
+        /// </summary>
+        /// <param name="news"></param>
+        [HttpPost("updateNews")]
+        public void UpdateNews(NewsDetailDto news)
+        {
+            _newsService.Update(news);
+        }
         /// <summary>
         /// Метод представления новости по id
         /// </summary>
@@ -60,7 +87,7 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
         /// Возвращает новость по id
         /// </returns>
         [HttpGet("id")]
-        public NewsDetailDto GetNews(Guid id)
+        public NewsMainDto GetNews(Guid id)
         {
             return _newsService.GetNews(id);
         }
@@ -73,7 +100,7 @@ namespace NewsPortalWebApi.Presentation_Layer.Controllers
         /// <returns>
         /// Возвращает имя автора по id
         /// </returns>
-        [HttpGet("AuthorId")]
+        [HttpGet("authorId")]
         public string GetAuthorName(Guid id)
         {
             return _newsService.GetAuthorName(id).Name;

@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NewsPortalWebApi.Data_Access.Models;
 
 namespace NewsPortalWebApi.Business_Logic.DTO
 {
     /// <summary>
-    /// DTO с полной информацией о новости
+    /// DTO для вывода одиночного объекта
     /// </summary>
-    public class NewsDetailDto
+    public class NewsMainDto
     {
         /// <summary>
         /// Идентификатор новости
@@ -46,7 +45,7 @@ namespace NewsPortalWebApi.Business_Logic.DTO
         /// <summary>
         /// Автор статьи
         /// </summary>
-        public AuthorDetailDTO Author { get; set; }
+        public AuthorDTO Author { get; set; }
         /// <summary>
         /// Идентификатор автора
         /// </summary>

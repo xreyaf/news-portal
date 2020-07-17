@@ -59,7 +59,7 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         /// </param>
         public void Add(News entity)
         {
-            _context.Add(entity);
+            _context.News.Add(entity);
         }
         /// <summary>
         /// Удаляет новость по id
@@ -75,11 +75,12 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         }
 
         /// <summary>
-        /// Изменяет новость
+        /// Обнавляет статус новости на Modified
         /// </summary>
         /// <param name="entity"></param>
         public void Update(News entity)
         {
+            _context.News.Update(entity);
             _context.Entry(entity).State = EntityState.Modified;
         }
     }

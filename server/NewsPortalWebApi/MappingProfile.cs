@@ -19,8 +19,10 @@ namespace NewsPortalWebApi.Business_Logic
         public MappingProfile()
         {
             CreateMap<News, NewsShortDto>();
-            CreateMap<News, NewsDetailDto>();
+            CreateMap<News, NewsDetailDto>().ReverseMap();
+            CreateMap<News, NewsMainDto>();
             CreateMap<Author, AuthorDTO>();
+            CreateMap<Author, AuthorDetailDTO>().ReverseMap();
         }
     }
 }

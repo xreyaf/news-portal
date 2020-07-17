@@ -14,7 +14,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
     /// <summary>
     /// Класс служб для работы с новостями
     /// </summary>
-    public class NewsServices : INewsService<NewsShortDto, NewsDetailDto, AuthorDTO>
+    public class NewsServices : INewsService
     {
         /// <summary>
         /// Объект UnitOfWork для получения доступа к репозиториям
@@ -36,6 +36,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
             _db = entity;
             _mapper = mapper;
         }
+
         /// <summary>
         /// Метод получения новости по Id
         /// </summary>
@@ -48,11 +49,12 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// <returns>
         /// Возвращает новость по ее id
         /// </returns>
-        public NewsDetailDto GetNews(Guid id)
+        public NewsMainDto GetNews(Guid id)
         {
             var news = _db.NewsRep.Get(id);
-            return _mapper.Map<NewsDetailDto>(news);
+            return _mapper.Map<NewsMainDto>(news);
         }
+
         /// <summary>
         /// Метод получения всех новостей
         /// </summary>
@@ -68,6 +70,7 @@ namespace NewsPortalWebApi.Business_Logic.Services
 
             return _mapper.Map<IEnumerable<News>, IEnumerable<NewsShortDto>>(news);
         }
+
         /// <summary>
         /// Метод получения группы новостей
         /// </summary>
@@ -90,6 +93,35 @@ namespace NewsPortalWebApi.Business_Logic.Services
         public AuthorDTO GetAuthorName(Guid id)
         {
             return _mapper.Map<AuthorDTO>(_db.AuthorsRep.Get(id));
+        }
+
+        /// <summary>
+        /// Добавляет запись в бд
+        /// </summary>
+        /// <param name="news">Новость</param>
+        public void Add(NewsDetailDto news)
+        {
+            News _news = _mapper.Map<News>(news);
+            _news.Id = new Guid();
+            _news.CreationDateTime = DateTime.Now;
+            _news.ChangingDateTime = DateTime.Now;
+            _db.NewsRep.Add(_news);
+            _db.Save();
+        }
+        /// <summary>
+        /// Изменяет уже имеющуюся новость
+        /// </summary>
+        /// <param name="news"></param>
+        public void Update(NewsDetailDto news)
+        {
+            News _news = _mapper.Map<News>(news);
+            _db.NewsRep.Update(_news);
+            _db.Save();
+        }
+
+        public void Delete(Guid id)
+        {
+            _db.NewsRep.Delete(id);
         }
     }
 }
