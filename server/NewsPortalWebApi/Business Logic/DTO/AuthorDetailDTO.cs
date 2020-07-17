@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NewsPortalWebApi.Data_Access.Models;
 
 namespace NewsPortalWebApi.Business_Logic.DTO
 {
     /// <summary>
-    /// DTO с информацией об авторе без списка принадлежащих им новостей
+    /// DTO с полной информацией об авторе
     /// </summary>
-    public class AuthorDTO
+    public class AuthorDetailDTO
     {
         /// <summary>
         /// id автора
-        /// </summary>
-        public Guid Id { get; set; }
+        /// /// </summary>
+        public Guid Id { get; set; } 
         /// <summary>
         /// Имя автора
         /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Список новостей данного автора
+        /// </summary>
+        public ICollection<NewsDetailDto> News { get; set; }
     }
 }

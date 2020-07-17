@@ -9,12 +9,7 @@ namespace NewsPortalWebApi.Business_Logic.Inerfaces
     /// <summary>
     /// Интерфейс служб для работы с новостями
     /// </summary>
-    /// <typeparam name="TShort"></typeparam>
-    /// <typeparam name="TDetail"></typeparam>
-    /// <typeparam name="TAuthor"></typeparam>
-    public interface INewsService<TShort, TDetail, TAuthor> 
-        where TShort : class
-        where TDetail : class
+    public interface INewsService
     {
         /// <summary>
         /// Получение новости по id
@@ -25,24 +20,39 @@ namespace NewsPortalWebApi.Business_Logic.Inerfaces
         /// <returns>
         /// Возвращает новость
         /// </returns>
-        TDetail GetNews(Guid id);
+        NewsMainDto GetNews(Guid id);
         /// <summary>
         /// Получение всех новостей
         /// </summary>
         /// <returns>
         /// Возвращение всех новостей
         /// </returns>
-        IEnumerable<TShort> GetAllNews();
+        IEnumerable<NewsShortDto> GetAllNews();
         /// <summary>
         /// Получение группы новостей
         /// </summary>
         /// <returns>Возвращает группу из нескольких новостей</returns>
-        IEnumerable<TShort> GetGroupNews(int page);
+        IEnumerable<NewsShortDto> GetGroupNews(int page);
+        /// <summary>
+        /// Добавление новости в базу данных
+        /// </summary>
+        /// <param name="news">Новость</param>
+        void Add(NewsDetailDto news);
+        /// <summary>
+        /// Обновление новости
+        /// </summary>
+        /// <param name="news"></param>
+        void Update(NewsDetailDto news);
+        /// <summary>
+        /// Удаление по идентификатору
+        /// </summary>
+        /// <param name="id"></param>
+        void Delete(Guid id);
         /// <summary>
         /// Получение имени автора по id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        TAuthor GetAuthorName(Guid id);
+        AuthorDTO GetAuthorName(Guid id);
     }
 }
