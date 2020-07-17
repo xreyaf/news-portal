@@ -31,7 +31,7 @@ const News = ({ _id, title, description, image, date }) => {
               component="img"
               height="270"
               className={classes.media}
-              image={image}
+              image={`data:image/png;base64,${image}`}
               alt={title}
             />
             <CardContent>

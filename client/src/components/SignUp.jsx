@@ -57,7 +57,7 @@ export default function SignUp(props) {
         variant="h4"
         className={classes.title}
       >
-        Read Comment Create
+        Sign in
       </Typography>
       <form className={classes.form} noValidate>
         <ThemeProvider theme={theme}>

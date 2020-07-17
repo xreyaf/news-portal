@@ -6,13 +6,15 @@ import { Card, CardContent, CardMedia, NewsSkeleton, Container } from './';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(2, 0, 4, 0),
     minHeight: '80vh',
   },
   media: {
     height: '40vh',
     backgroundRepeat: 'no-repeat',
     borderRadius: '5px',
+  },
+  card: {
+    padding: theme.spacing(0, 2, 0, 2),
   },
   title: {
     padding: theme.spacing(2, 2),
@@ -44,7 +46,7 @@ export default function News() {
   const classes = useStyles();
 
   return (
-    <Container className={classes.root} maxWidth="xl">
+    <Container className={classes.root} maxWidth="lg">
       {data.length === 0 ? (
         <NewsSkeleton />
       ) : (
@@ -62,7 +64,7 @@ export default function News() {
             <CardMedia
               component="img"
               className={classes.media}
-              image={data.newsImage}
+              image={`data:image/png;base64,${data.newsImage}`}
               alt={data.title}
             />
             <Typography
