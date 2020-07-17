@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Main() {
+export default function News() {
   const classes = useStyles();
 
   return (
