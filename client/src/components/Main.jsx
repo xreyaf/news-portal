@@ -36,8 +36,6 @@ export default function Main() {
         setData([...data, ...res.data]);
         setLength(10);
         count = count + 1;
-        console.log(count);
-        console.log(API_URL + `${count}`);
         setIsFetching(false);
       })
       .catch((err) => console.log(`Couldn't fetch data. Error: ${err})`));
