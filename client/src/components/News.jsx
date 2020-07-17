@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const API_URL =
-  'https://localhost:5001/api/News/id?id='
+  'https://fierce-sands-81057.herokuapp.com/api/News/id?id='
 
 export default function News() {
   const [data, setData] = useState([]);
@@ -62,7 +62,7 @@ export default function News() {
           >
             {data.title}
           </Typography>
-          <CardMedia className={classes.media} image={pic} />
+          <CardMedia className={classes.media} image={data.newsImage} />
           <Typography
             gutterBottom
             variant="body1"

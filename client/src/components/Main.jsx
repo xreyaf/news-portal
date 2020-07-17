@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const API_URL =
-  'https://localhost:5001/api/News/page?page=';
+  'https://fierce-sands-81057.herokuapp.com/api/News/page?page=';
 let count= 1;
 
 export default function Main() {
