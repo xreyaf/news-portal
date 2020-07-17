@@ -4,17 +4,17 @@
         <name>NewsPortalWebApi</name>
     </assembly>
     <members>
-        <member name="T:NewsPortalWebApi.Business_Logic.DTO.AuthorDto">
+        <member name="T:NewsPortalWebApi.Business_Logic.DTO.AuthorDTO">
             <summary>
             DTO с информацией об авторе
             </summary>
         </member>
-        <member name="P:NewsPortalWebApi.Business_Logic.DTO.AuthorDto.Id">
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.AuthorDTO.Id">
             <summary>
             id автора
             </summary>
         </member>
-        <member name="P:NewsPortalWebApi.Business_Logic.DTO.AuthorDto.Name">
+        <member name="P:NewsPortalWebApi.Business_Logic.DTO.AuthorDTO.Name">
             <summary>
             Имя автора
             </summary>
@@ -560,7 +560,7 @@
             Контроллер представления новостей
             </summary>
         </member>
-        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.#ctor(NewsPortalWebApi.Business_Logic.Inerfaces.INewsService{NewsPortalWebApi.Business_Logic.DTO.NewsShortDto,NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto,NewsPortalWebApi.Business_Logic.DTO.AuthorDto})">
+        <member name="M:NewsPortalWebApi.Presentation_Layer.Controllers.NewsController.#ctor(NewsPortalWebApi.Business_Logic.Inerfaces.INewsService{NewsPortalWebApi.Business_Logic.DTO.NewsShortDto,NewsPortalWebApi.Business_Logic.DTO.NewsDetailDto,NewsPortalWebApi.Business_Logic.DTO.AuthorDTO})">
             <summary>
             Конструктор контроллера
             </summary>

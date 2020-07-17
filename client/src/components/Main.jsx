@@ -56,11 +56,11 @@ export default function Main() {
         ) : (
           data.map((item) => (
             <NewsCard
-              _id={item._id}
+              _id={item.id}
               title={item.title}
               description={item.description}
-              image={item.image}
-              date={item.date}
+              image={item.newsImage}
+              date={item.creationDateTime}
             />
           ))
         )}

@@ -47,7 +47,10 @@ namespace NewsPortalWebApi.Data_Access.EFCore.Repositories
         /// Возвращает нужную новость</returns>
         public News Get(Guid id)
         {
-            return _context.News.Find(id);
+            var news = _context.News
+                .Include(author => author.Author)
+                .Single(news => news.Id == id);
+            return news;
         }
         /// <summary>
         /// Добавляет новость в базу данных

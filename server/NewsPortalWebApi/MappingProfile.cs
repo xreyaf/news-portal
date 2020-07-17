@@ -19,8 +19,6 @@ namespace NewsPortalWebApi.Business_Logic
         public MappingProfile()
         {
             CreateMap<News, NewsShortDto>();
-            //    .ForMember("AuthorName",
-            //        opt => opt.MapFrom(c => c.Author.Name));
             CreateMap<News, NewsDetailDto>();
             CreateMap<Author, AuthorDTO>();
         }

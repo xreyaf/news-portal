@@ -86,7 +86,7 @@ export default function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route path="/news" component={News} />
+          <Route path="/news/id" component={News} />
         </Switch>
         <Footer />
       </BrowserRouter>

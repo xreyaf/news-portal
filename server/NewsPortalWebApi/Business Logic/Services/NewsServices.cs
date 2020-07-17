@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using AutoMapper;
 using NewsPortalWebApi.Business_Logic.DTO;
@@ -35,7 +36,6 @@ namespace NewsPortalWebApi.Business_Logic.Services
             _db = entity;
             _mapper = mapper;
         }
-
         /// <summary>
         /// Метод получения новости по Id
         /// </summary>
@@ -50,7 +50,8 @@ namespace NewsPortalWebApi.Business_Logic.Services
         /// </returns>
         public NewsDetailDto GetNews(Guid id)
         {
-            return _mapper.Map<NewsDetailDto>(_db.NewsRep.Get(id));
+            var news = _db.NewsRep.Get(id);
+            return _mapper.Map<NewsDetailDto>(news);
         }
         /// <summary>
         /// Метод получения всех новостей

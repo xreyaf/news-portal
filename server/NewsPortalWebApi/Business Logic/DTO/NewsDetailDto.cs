@@ -42,7 +42,7 @@ namespace NewsPortalWebApi.Business_Logic.DTO
         /// <summary>
         /// Автор статьи
         /// </summary>
-        public Author Author { get; set; }
+        public AuthorDTO Author { get; set; }
         /// <summary>
         /// Идентификатор автора
         /// </summary>
