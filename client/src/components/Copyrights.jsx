@@ -26,11 +26,21 @@ export default function Copyrights() {
     >
       {`© `}
       {new Date().getFullYear()}{' '}
-      <Link href="http://bmstu-kaluga.ru/" className={classes.links}>
+      <Link
+        href="http://bmstu-kaluga.ru/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes.links}
+      >
         BMSTU KALUGA
       </Link>
       {` `}
-      <Link href="https://vk.com/eic5_kb" className={classes.links}>
+      <Link
+        href="https://vk.com/eic5_kb"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes.links}
+      >
         IPS
       </Link>
     </Typography>

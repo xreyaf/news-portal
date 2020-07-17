@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from './';
-import Container from '@material-ui/core/Container';
+import { Grid, Container } from './';
 import NewsCard from './NewsCard';
 import useInfiniteScroll from './useInfinite';
 import Skeletons from './Skeletons';
@@ -14,9 +13,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const API_URL =
-  'https://fierce-sands-81057.herokuapp.com/api/News/page?page=';
-let count= 1;
+const API_URL = 'https://fierce-sands-81057.herokuapp.com/api/News/page?page=';
+let count = 1;
 
 export default function Main() {
   const classes = useStyles();
@@ -25,23 +23,23 @@ export default function Main() {
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreData);
 
   const loadData = () => {
-    axios.get(API_URL+'0').then((res) => {
+    axios.get(API_URL + '0').then((res) => {
       setData(res.data.slice(0, length));
     });
   };
 
-
-
   function fetchMoreData() {
-    axios.get(API_URL+`${count}`).then((res) => {
-      setData([...data, ...res.data]);
-      setLength(10);
-      count = count + 1;
-      console.log(count);
-      console.log(API_URL+`${count}`);
-      setIsFetching(false);
-      
-    }).catch((err) => console.log(`Couldn't fetch data. Error: ${err})`));
+    axios
+      .get(API_URL + `${count}`)
+      .then((res) => {
+        setData([...data, ...res.data]);
+        setLength(10);
+        count = count + 1;
+        console.log(count);
+        console.log(API_URL + `${count}`);
+        setIsFetching(false);
+      })
+      .catch((err) => console.log(`Couldn't fetch data. Error: ${err})`));
   }
 
   useEffect(() => {

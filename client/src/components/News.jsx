@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import Skeletons from './Skeletons';
-import { Grid, Card, CardActionArea, CardContent, CardMedia } from './';
-import pic from './pic.jpg';
+import { Card, CardContent, CardMedia, NewsSkeleton, Container } from './';
 
 const useStyles = makeStyles((theme) => ({
   newsContainer: {
@@ -50,37 +47,41 @@ export default function News() {
 
   return (
     <Container className={classes.newsContainer} maxWidth="lg">
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography
-            gutterBottom
-            variant="h4"
-            component="h1"
-            align="center"
-            className={classes.title}
-          >
-            {data.title}
-          </Typography>
-          <CardMedia className={classes.media} image={data.newsImage} />
-          <Typography
-            gutterBottom
-            variant="body1"
-            color="inherit"
-            component="p"
-            className={classes.mainText}
-          >
-            {data.mainText}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            component="p"
-            className={classes.date}
-          >
-            {data.creationDateTime}| {data.authorName}
-          </Typography>
-        </CardContent>
-      </Card>
+      {data.length === 0 ? (
+        <NewsSkeleton />
+      ) : (
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h4"
+              component="h1"
+              align="center"
+              className={classes.title}
+            >
+              {data.title}
+            </Typography>
+            <CardMedia className={classes.media} image={data.newsImage} />
+            <Typography
+              gutterBottom
+              variant="body1"
+              color="inherit"
+              component="p"
+              className={classes.mainText}
+            >
+              {data.mainText}
+            </Typography>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              className={classes.date}
+            >
+              {data.creationDateTime} | {data.authorName}
+            </Typography>
+          </CardContent>
+        </Card>
+      )}
     </Container>
   );
 }
