@@ -28,7 +28,10 @@ const News = ({ _id, title, description, image, date }) => {
       <Link href={'/news/id?id=' + `${_id}`} underline="none">
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia className={classes.media} image={image} />
+            <CardMedia
+              className={classes.media}
+              image="https://medialeaks.ru/wp-content/uploads/2017/09/breaking-news-6-600x338.jpg"
+            />
             <CardContent>
               <Typography
                 gutterBottom
