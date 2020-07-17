@@ -94,6 +94,7 @@ export default function SignUp(props) {
             fullWidth
             variant="contained"
             color="primary"
+            disabled
             className={classes.submit}
           >
             Sign In

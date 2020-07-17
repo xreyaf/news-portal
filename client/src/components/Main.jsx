@@ -8,7 +8,7 @@ import Skeletons from './Skeletons';
 
 const useStyles = makeStyles((theme) => ({
   grid: {
-    minHeight: '70vh',
+    minHeight: '80vh',
     width: '100%',
     margin: theme.spacing(0, 0),
   },
